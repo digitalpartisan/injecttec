@@ -1,0 +1,13 @@
+Inject-Tec is a Papyrus script library which enables modders to easily inject forms into form lists and leveled lists as well as injecting naming rules into existing rule sets.  Inject-Tec has the ability to easily and quickly reference records from other plugins which makes it ideal for applications such as compatibility patches and more complicated injection needs.
+
+Do not download and/or activate this mod unless another modder has expressly said to do so either because they did not bundle it with their mod or else because a bug has been discovered and the updated version of Inject-Tec has yet to make it into their mod.  If you're installing Inject-Tec because of a bugfix update, place it in your load order after any mods containing the bugged version of this library.
+
+-
+
+If you want to use Inject-Tec in one of your mods, find the developer tools and loose files on the Nexus which you may use and explore in the Creation Kit as well as suggestions for how to proceed with incorporating Inject-Tec into your project.
+
+-
+
+If you want to use Inject-Tec in one of your mods, download and install the Inject-Tec Testing package which includes the loose files.  Open the InjectTecTesting.esp file in the Creation Kit and familiarize yourself with its contents.  Because there is no testing framework for Papyrus, the Inject-Tec Testing mod was created to examine the effects of the various injection options Inject-Tec provides – including the ability to read from and inject into records in other plugins.  A useful side-effect of the testing package is that a modder can examine how it makes use of the Inject-Tec library.  If you're curious to see Inject-Tec in action, enable the InjectTecTesting.esp file in your Fallout 4 installation.  Then, run the game and enter the command “coc injecttectesting” in the console.  It's best if you don't save any games with the InjectTecTesting plugin enabled since it's not intended to provide any actual functionality.
+
+It is best practice to bundle the Inject-Tec scripts with your plugin's main.ba2 file so that messing with extra plugins or loose files isn't put upon the end user.  In cases where you cannot or will not do so, you should direct your users to this plugin so they know to download and install it.  The testing package has all the scripts (both source and complied) as well as an archive list so you know for a fact which files you'll need to include in your archive files.  The best use of this archive list is to add it's contents to the archive list for your plugin so that you're sure the Creation Kit bundles everything you need for your plugin unless you prefer to let the Creation Kit show you which files are needed for your package.
