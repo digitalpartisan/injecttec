@@ -1,5 +1,5 @@
 Scriptname InjectTec:Injector:FormList:FormList extends InjectTec:Injector:FormList
-{Attach this script in the editor to inject append a FormList source record to a targettted FormList record.}
+{Attach this script in the editor to inject append a FormList source record to a targetted FormList record.}
 
 Group SourceSettings
 	Bool Property isSourceLocal = true Auto Const

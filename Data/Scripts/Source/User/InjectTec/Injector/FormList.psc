@@ -1,6 +1,5 @@
-Scriptname InjectTec:Injector:FormList extends InjectTec:Injector
-{Do not attach this script in the editor.  Attach one of its children instead.
-Logic related to injecting information into FormList records.}
+Scriptname InjectTec:Injector:FormList extends InjectTec:Injector Hidden
+{Implementation of injection into FormList records.}
 
 Group TargetSettings
 	Bool Property isTargetLocal = true Auto Const

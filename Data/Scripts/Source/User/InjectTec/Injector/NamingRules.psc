@@ -1,5 +1,5 @@
 Scriptname InjectTec:Injector:NamingRules extends InjectTec:Injector
-{Attach this script in the editor to one InstanceNamingRules (INNR) record into another.}
+{Implementation of injection into InstanceNamingRule records.}
 
 Group TargetSettings
 	Bool Property isTargetLocal = true Auto Const

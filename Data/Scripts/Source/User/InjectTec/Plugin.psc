@@ -1,5 +1,5 @@
-Scriptname InjectTec:Plugin extends Quest
-{Do not attach this script in the editor.  This would be an interface in any other programming language.}
+Scriptname InjectTec:Plugin extends Quest Hidden
+{Base class for scripts which represent a plugin from which forms should be loaded or a group of plugins which contain variations on forms with the same form IDs which should be loaded from one of its versions.}
 
 String Function getFilename()
 {Override this method based on how the filename representing this plugin should be decided.}

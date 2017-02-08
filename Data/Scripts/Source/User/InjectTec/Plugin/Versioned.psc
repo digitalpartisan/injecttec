@@ -3,7 +3,7 @@ Scriptname InjectTec:Plugin:Versioned extends InjectTec:Plugin
 This is only suitable if you know for a fact that the Form IDs are the same across the various versions of the mod (as in, you went as checked yourself to make sure.)  Otherwise, this doesn't help so much.}
 
 InjectTec:Plugin:File[] Property Files Auto Const
-{The list of plugin files to search for.  Since only one is used, the first installed plugin becomes the "official" filename for the plugin as far as lookups go, so order these appropriately to suit your priorities.}
+{The list of plugin files to search for.  Since only one is used, the first plugin found becomes the "official" filename for the plugin as far as lookups go, so order these appropriately to suit your priorities.  See getFilename() for how this is used.}
 
 String Function getFilename()
 {Ideally, this method would save the name of the file, but there's no clear point in time after which it would be cleared, so I'd rather not keep that stale data around when the information could change based on things happening outside of the script environment which cannot be detected anyway.}
