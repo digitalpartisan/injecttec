@@ -1,13 +1,13 @@
-Scriptname InjectTec:Core:Leveled
+Scriptname InjectTec:Core:Leveled Hidden Const
 {Logic related to injecting Form records to LeveledItem records.}
 
-Function addForm(LeveledItem liTarget, Form fItem, Int iLevel = 1, Int iAmount = 1) global
+Function addForm(LeveledItem liTarget, Form fItem, Int iLevel = 1, Int iAmount = 1) Global
 {Trivial, except for logging.  Useful for debugging.}
 	liTarget.addForm(fItem, iLevel, iAmount)
 	Debug.Trace("[InjectTec][LeveledItem] target: " + liTarget + " addition: " + fItem)
 EndFunction
 
-Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int iAmount = 1) global
+Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int iAmount = 1) Global
 {Adds the Form records in the flForms FormList to the LeveledItem liTarget.}
 	Int iCounter = 0
 	Int iSize = flForms.getSize()
@@ -17,7 +17,7 @@ Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int
 	EndWhile
 EndFunction
 
-Function addFormListGranular(LeveledItem liTarget, FormList flForms, Int[] Levels, Int[] Amounts) global
+Function addFormListGranular(LeveledItem liTarget, FormList flForms, Int[] Levels, Int[] Amounts) Global
 {Adds the Form records in the flForms FormList to the LeveledItem liTarget.  Note this behavior requires Int arrays with the same length as flForms which provide the level and quantity values for each Form.}
 	Int iCounter = 0
 	Int iSize = flForms.getSize()
@@ -33,7 +33,7 @@ Function addFormListGranular(LeveledItem liTarget, FormList flForms, Int[] Level
 	EndWhile
 EndFunction
 
-Function revert(LeveledItem liTarget)
+Function revert(LeveledItem liTarget) Global
 {Trivial, except for logging.  Especially useful for debugging because this behavior is known to be particularly destructive.}
 	liTarget.revert()
 	Debug.Trace("[InjectTec][Leveled] reverting " + liTarget)

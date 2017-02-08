@@ -1,5 +1,5 @@
 Scriptname InjectTec:Injector:Leveled:Granular extends InjectTec:Injector:Leveled
-{Attach this script in the editor to inject append the Form records from a FormList source record to a targettted LeveledItem record with granular control over which levels and quantities are used for each Form record added.
+{Attach this script in the editor to inject append the Form records from a FormList source record to a targetted LeveledItem record with granular control over which levels and quantities are used for each Form record added.
 See notes on InjectTec:Core:Leveled.addFormListGranular() for specifics.}
 
 Group SourceSettings

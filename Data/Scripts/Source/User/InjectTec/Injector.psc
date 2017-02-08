@@ -1,9 +1,7 @@
-Scriptname InjectTec:Injector extends Quest
-{This script is not intended to be attached in the editor.
-Extend this script to provide easy access to the logic in the InjectTec library to objects in the Creation Kit editor.
-See child scripts for specifics.}
+Scriptname InjectTec:Injector extends Quest Hidden
+{Extend this script to provide easy access to the logic in the InjectTec library to objects in the Creation Kit editor.  See child scripts for specifics.}
 
-Bool bHasRun = false
+Bool bHasRun = false ; this should be based on Papyrus' script states and the like, but I didn't do that and now, save games with Injectors in them won't convert easily, so it's staying this way
 
 Bool Function getHasRun()
 	return bHasRun

@@ -1,8 +1,7 @@
 Scriptname InjectTec:Injector:Bulk extends Quest
-{This script bulk-executes a list of InjectTec:Injector objects.
-Useful for running a number of injections during a mod's initialization quest or the like.}
+{This script bulk-executes a list of InjectTec:Injector objects.  Useful for running a number of injections during a mod's initialization quest or the like.}
 
-FormList Property Injectors Auto Const
+FormList Property Injectors Auto Const Mandatory
 {The InjectTec:Injector objects to work on.  Not an array because this list has a tendency to become long and arrays are cumbersome to work with in the editor.}
 InjectTec:Plugin Property Plugin = None Auto Const
 {The InjectTec:Plugin objects to verify plugin existence before running injection / reversion operations.

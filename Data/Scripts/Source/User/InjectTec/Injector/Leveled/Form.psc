@@ -1,5 +1,5 @@
 Scriptname InjectTec:Injector:Leveled:Form extends InjectTec:Injector:Leveled
-{Attach this script in the editor to inject append a Form source record to a targettted LeveledItem record.}
+{Attach this script in the editor to inject append a Form source record to a targetted LeveledItem record.}
 
 Group SourceSettings
 	Bool Property isSourceLocal = true Auto Const
