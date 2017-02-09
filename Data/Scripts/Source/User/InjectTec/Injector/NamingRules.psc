@@ -37,33 +37,19 @@ EndFunction
 Bool Function canLoadTarget()
 {Returns a boolean value indicating whether or not the targetted InstanceNamingRules record can be found and saves the InstanceNamingRules for use in injection should it load.}
 	innrTarget = InjectTec:Loader:NamingRules.load(isTargetLocal, targetRules, targetPlugin, targetID)
-	if (innrTarget == "None")
-		logMessage("target not found: " + self)
-		return false
-	else
-		return true
-	endif
+	return (None != innrTarget)
 EndFunction
 
 Bool Function canLoadSource()
 {Returns a boolean value indicating whether or not the InstanceNamingRules source record can be found and saves the InstanceNamingRules for use in injection should it load.}
 	innrAdditions = InjectTec:Loader:NamingRules.load(isSourceLocal, sourceRules, sourcePlugin, sourceID)
-	if (innrAdditions == "None")
-		logMessage("additions not found: " + self)
-		return false
-	else
-		return true
-	endif
-EndFunction
-
-Function logMessage(String sMessage)
-	parent.logMessage("[NamingRules]" + sMessage)
+	return (None != innrAdditions)
 EndFunction
 
 Function clear()
+{Doesn't call parent.clear() to avoid warning in debug logs.}
 	innrTarget = None
 	innrAdditions = None
-	parent.clear()
 EndFunction
 
 Function injectBehavior()

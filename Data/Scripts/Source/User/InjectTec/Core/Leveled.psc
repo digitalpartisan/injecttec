@@ -3,16 +3,17 @@ Scriptname InjectTec:Core:Leveled Hidden Const
 
 Function addForm(LeveledItem liTarget, Form fItem, Int iLevel = 1, Int iAmount = 1) Global
 {Trivial, except for logging.  Useful for debugging.}
-	liTarget.addForm(fItem, iLevel, iAmount)
-	Debug.Trace("[InjectTec][LeveledItem] target: " + liTarget + " addition: " + fItem)
+	InjectTec:Logger:Injection.log(liTarget, fItem)
+	liTarget.AddForm(fItem, iLevel, iAmount)
 EndFunction
 
 Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int iAmount = 1) Global
 {Adds the Form records in the flForms FormList to the LeveledItem liTarget.}
+	InjectTec:Logger:Injection.leveled(liTarget, flForms, iLevel, iAmount)
 	Int iCounter = 0
 	Int iSize = flForms.getSize()
 	While (iCounter < iSize)
-		addForm(liTarget, flForms.getAt(iCounter), iLevel, iAmount)
+		liTarget.AddForm(flForms.getAt(iCounter), iLevel, iAmount)
 		iCounter += 1
 	EndWhile
 EndFunction
@@ -23,18 +24,19 @@ Function addFormListGranular(LeveledItem liTarget, FormList flForms, Int[] Level
 	Int iSize = flForms.getSize()
 	
 	If ( (iSize != Levels.Length) || (iSize != Amounts.Length) )
-		Debug.Trace("[InjectTec][Leveled] forms / levels / amounts data size mismatch, no insertion performed")
+		InjectTec:Logger:Injection.leveledGranularSizeMismatch(liTarget, flForms, Levels, Amounts)
 		return
 	EndIf
 	
+	InjectTec:Logger:Injection.leveledGranular(liTarget, flForms, Levels, Amounts)
 	While (iCounter < iSize)
-		addForm(liTarget, flForms.getAt(iCounter), Levels[iCounter], Amounts[iCounter])
+		liTarget.AddForm(flForms.getAt(iCounter), Levels[iCounter], Amounts[iCounter])
 		iCounter += 1
 	EndWhile
 EndFunction
 
 Function revert(LeveledItem liTarget) Global
 {Trivial, except for logging.  Especially useful for debugging because this behavior is known to be particularly destructive.}
+	InjectTec:Logger:Reversion.leveled(liTarget)
 	liTarget.revert()
-	Debug.Trace("[InjectTec][Leveled] reverting " + liTarget)
 EndFunction

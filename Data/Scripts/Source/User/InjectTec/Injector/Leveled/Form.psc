@@ -32,16 +32,7 @@ EndFunction
 Bool Function canLoadSource()
 {Returns a boolean value indicating whether or not the Form source record can be found and saves the Form for use in injection should it load.}
 	fAddition = InjectTec:Loader:Form.load(isSourceLocal, sourceForm, sourcePlugin, sourceID)
-	if (fAddition == None)
-		logMessage("addition not found: " + self)
-		return false
-	else
-		return true
-	endif
-EndFunction
-
-Function logMessage(String sMessage)
-	parent.logMessage("[Form]" + sMessage)
+	return (None != fAddition)
 EndFunction
 
 Function clear()

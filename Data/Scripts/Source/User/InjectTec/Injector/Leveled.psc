@@ -21,25 +21,16 @@ EndFunction
 Bool Function canLoadTarget()
 {Returns a boolean value indicating whether or not the targetted LeveledItem record can be found and saves the LeveledItem for use in injection should it load.}
 	liTarget = InjectTec:Loader:Leveled.load(isTargetLocal, targetLeveled, targetPlugin, targetID)
-	if (liTarget == "None")
-		logMessage("target not found: " + self)
-		return false
-	else
-		return true
-	endif
-EndFunction
-
-Function logMessage(String sMessage)
-	parent.logMessage("[Leveled]" + sMessage)
+	return (None != liTarget)
 EndFunction
 
 Function clear()
+{Doesn't call parent.clear() to avoid warning in debug logs.}
 	liTarget = None
-	parent.clear()
 EndFunction
 
 Function revertBehavior()
-	getTarget().revert()
+	InjectTec:Core:Leveled.revert(getTarget())
 EndFunction
 
 Function revert(Bool bForce = false)
