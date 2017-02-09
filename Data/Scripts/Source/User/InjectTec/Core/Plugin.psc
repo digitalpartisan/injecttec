@@ -1,18 +1,6 @@
 Scriptname InjectTec:Core:Plugin Hidden Const
 {Logic related to locating forms in plugin files.  Mostly trivial, except that the detail level of logging may be required to diagnose mysterious issues because the compiler can't tell you if you goofed something up.}
 
-Function logMessage(String sLogEntry) Global
-	Debug.TraceStack("[InjectTec][Plugin]" + sLogEntry)
-EndFunction
-
-Function logNotInstalledFailureMessage(String sPluginName) Global
-	logMessage("form lookup failed, plugin file not installed: " + sPluginName)
-EndFunction
-
-Function lookupMessage(String sPluginName, Int iFormID, String sLogEntry) Global
-	logMessage("file: " + sPluginName + " formID: " + iFormID + " " + sLogEntry)
-EndFunction
-
 Bool Function isPluginInstalled(String sFilename) Global
 {Does what it says on the tin.}
 	return Game.isPluginInstalled(sFilename)
@@ -21,14 +9,14 @@ EndFunction
 Form Function fetchForm(String sPluginName, Int iFormID) Global
 {Trivial, except for the logging.  This is the sort of thing that you have to diagnose post-runtime to find out if the plugin name / ID was correct.}
 	if (!isPluginInstalled(sPluginName))
-		logNotInstalledFailureMessage(sPluginName)
+		InjectTec:Logger:Plugin.notInstalled(sPluginName)
 		return None
 	endif
 
-	Form found = Game.GetFormFromFile(iFormID, sPluginName)
+	Form found = Game.GetFormFromFile(iFormID, sPluginName) ; parameter orders seem wrong to me, but I program in PHP during the day, so it's not like I'm triggered by it or anything
 
 	if (found == None)
-		lookupMessage(sPluginName, iFormID, "form not found in plugin")
+		InjectTec:Logger:Plugin.lookupFailed(sPluginName, iFormID)
 	endif
 
 	return found
@@ -40,7 +28,7 @@ FormList Function fetchFormList(String sPluginName, Int iFormID) Global
 	FormList casted = fetched as FormList
 	
 	if (casted == None)
-		lookupMessage(sPluginName, iFormID, fetched + " failed to cast to form list")
+		InjectTec:Logger:Plugin.couldNotCast(sPluginName, iFormID, "form list")
 	endif
 	
 	return casted
@@ -52,7 +40,7 @@ LeveledItem Function fetchLeveled(String sPluginName, Int iFormID) Global
 	LeveledItem casted = fetched as LeveledItem
 	
 	if (casted == None)
-		lookupMessage(sPluginName, iFormID, fetched + " failed to cast to leveled item")
+		InjectTec:Logger:Plugin.couldNotCast(sPluginName, iFormID, "leveled item")
 	endif
 	
 	return casted
@@ -64,7 +52,7 @@ InstanceNamingRules Function fetchNamingRules(String sPluginName, Int iFormID) G
 	InstanceNamingRules casted = fetched as InstanceNamingRules
 	
 	if (casted == None)
-		lookupMessage(sPluginName, iFormID, fetched + " failed to cast to instance naming rules")
+		InjectTec:Logger:Plugin.couldNotCast(sPluginName, iFormID, "naming rules")
 	endif
 	
 	return casted

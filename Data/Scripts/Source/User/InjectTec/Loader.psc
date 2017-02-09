@@ -3,8 +3,8 @@ Scriptname InjectTec:Loader extends Quest Hidden
 Attach these child scripts in the editor to enable easy referencing of another plugin's records.}
 
 Group RemoteSourceSettings
-	InjectTec:Plugin Property RemotePlugin = None Auto Const
+	InjectTec:Plugin Property RemotePlugin = None Auto Const Mandatory
 	{The plugin containing the required record.}
-	Int Property RemoteID = 0 Auto Const
+	Int Property RemoteID = 0 Auto Const Mandatory
 	{The record ID of the sourced Form.  Set this value if the value of isSourceLocal has been set to false.}
 EndGroup

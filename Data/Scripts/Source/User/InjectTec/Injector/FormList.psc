@@ -21,19 +21,10 @@ EndFunction
 Bool Function canLoadTarget()
 {Returns a boolean value indicating whether or not the targetted FormList record can be found and saves the FormList for use in injection should it load.}
 	flTarget = InjectTec:Loader:FormList.load(isTargetLocal, targetList, targetPlugin, targetID)
-	if (flTarget == "None")
-		logMessage("target not found: " + self)
-		return false
-	else
-		return true
-	endif
-EndFunction
-
-Function logMessage(String sMessage)
-	parent.logMessage("[FormList]" + sMessage)
+	return (None != flTarget)
 EndFunction
 
 Function clear()
+{Doesn't call parent.clear() to avoid warning in debug logs.}
 	flTarget = None
-	parent.clear()
 EndFunction

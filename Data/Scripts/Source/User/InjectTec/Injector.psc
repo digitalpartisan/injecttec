@@ -11,20 +11,21 @@ Function setHasRun(Bool bNewValue = true)
 	bHasRun = bNewValue
 EndFunction
 
-Function logMessage(String sMessage)
-	Debug.Trace("[InjectTec][Injector]" + sMessage)
-EndFunction
-
 Bool Function canLoadTarget()
 {Override this method to specify what the target record is and how it is accessed.}
+	InjectTec:Logger:Injector.behaviorUndefined(self, "canLoadTarget()")
+	return false
 EndFunction
 
 Bool Function canLoadSource()
 {Overrride this method to specify what the source (that is, the source of the new data) is and how it is accessed.}
+	InjectTec:Logger:Injector.behaviorUndefined(self, "canLoadSource()")
+	return false
 EndFunction
 
 Function clear()
 {Precaution against junk data staying around in the variables of child scripts.  See child scripts for details.}
+	InjectTec:Logger:Injector.behaviorUndefined(self, "clear()")
 EndFunction
 
 Bool Function canLoadRecords()
@@ -38,31 +39,22 @@ EndFunction
 
 Function injectBehavior()
 {Override this behavior in child scripts to implement specific injection logic on particular data types.}
-	logMessage("injection behavior not overridden, no injection will occur: " + self)
+	InjectTec:Logger:Injector.behaviorUndefined(self, "injectBehavior()")
 EndFunction
 
 Bool Function canInject(Bool bForce = false)
-	if (!canLoadRecords())
-		logMessage("cannot inject " + self + " because records won't load")
-		return false
-	endif
-	
-	if (getHasRun() && !bForce)
-		logMessage("cannot inject " + self + " because injection has run and force is not applied")
-		return false
-	endif
-	
-	return true
+	return (canLoadRecords() && (!getHasRun() || bForce)) ; either this injector must not have run or else injection must be coerced
 EndFunction
 
 Function inject(Bool bForce = false)
 {Call this method to cause the injection behavior to occur.}
 	if (canInject(bForce))
-		logMessage("injecting " + self)
+		InjectTec:Logger:Injector.injecting(self, bForce)
 		injectBehavior()
 		setHasRun(true)
 	endif
-	clear() ; wipe out data regardless of whether or not action was taken since it's trivial to load back in
+	
+	clear() ; wipe out data regardless of whether or not action was taken since it's trivial to load back in and cleanliness matters
 EndFunction
 
 Function forceInject()
@@ -71,31 +63,22 @@ EndFunction
 
 Function revertBehavior()
 {Override this behavior to revert the injection as needed.}
-	logMessage("reversion behavior not overridden, no reversion will occur: " + self)
+	InjectTec:Logger:Injector.behaviorUndefined(self, "revertBehavior()")
 EndFunction
 
 Bool Function canRevert(Bool bForce = false)
-	if (!canLoadRecords())
-		logMessage("cannot revert " + self + " because records won't load")
-		return false
-	endif
-	
-	if (!getHasRun() && !bForce)
-		logMessage("cannot revert " + self + " because injection has not run and force is not applied")
-		return false
-	endif
-	
-	return true
+	return (canLoadRecords() && (getHasRun() || bForce)) ; either this injector must have been run or else reversion must be coerced
 EndFunction
 
 Function revert(Bool bForce = false)
 {Call this method to cause the injection behavior to be reversed.
 Warning: reverting script changes could wipe out all injections, not just yours.  Use as a last resort and investigate other options in and out of this library first.}
 	if (canRevert(bForce))
-		logMessage("reverting " + self)
+		InjectTec:Logger:Injector.reverting(self, bForce)
 		revertBehavior()
 		setHasRun(false)
 	endif
+	
 	clear() ; wipe out data regardless of whether or not action was taken since it's trivial to load back in
 EndFunction
 

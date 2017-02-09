@@ -32,16 +32,7 @@ EndFunction
 Bool Function canLoadSource()
 {Returns a boolean value indicating whether or not the FormList source record can be found and saves the FormList for use in injection should it load.}
 	flAdditions = InjectTec:Loader:FormList.load(isSourceLocal, sourceFormList, sourcePlugin, sourceID)
-	if (flAdditions == None)
-		logMessage("additions not found: " + self)
-		return false
-	else
-		return true
-	endif
-EndFunction
-
-Function logMessage(String sMessage)
-	parent.logMessage("[FormList]" + sMessage)
+	return (None != flAdditions)
 EndFunction
 
 Function clear()

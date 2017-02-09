@@ -16,10 +16,15 @@
 	"Data\\Scripts\\InjectTec\\Loader\\FormList.pex",
 	"Data\\Scripts\\InjectTec\\Loader\\Leveled.pex",
 	"Data\\Scripts\\InjectTec\\Loader\\NamingRules.pex",
+	"Data\\Scripts\\InjectTec\\Logger\\Injection.pex",
+	"Data\\Scripts\\InjectTec\\Logger\\Injector.pex",
+	"Data\\Scripts\\InjectTec\\Logger\\Plugin.pex",
+	"Data\\Scripts\\InjectTec\\Logger\\Reversion.pex",
 	"Data\\SCRIPTS\\InjectTec\\Plugin\\File.pex",
 	"Data\\SCRIPTS\\InjectTec\\Plugin\\Singleton.pex",
 	"Data\\Scripts\\InjectTec\\Plugin\\Versioned.pex",
-	"Data\\SCRIPTS\\InjectTec\\Injector.pex",
+	"Data\\SCRIPTS\\injecttec\\injector.pex",
 	"Data\\Scripts\\InjectTec\\Loader.pex",
-	"Data\\SCRIPTS\\InjectTec\\Plugin.pex"
+	"Data\\Scripts\\InjectTec\\Logger.pex",
+	"Data\\SCRIPTS\\injecttec\\plugin.pex"
 ]
