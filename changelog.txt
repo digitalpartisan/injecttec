@@ -1,2 +1,6 @@
-1.0.0
-Initial release
+v1.1.0
+ - Incorporated use of Papyrus' script flags
+ - Incorporated use of Loggout for improved debugging
+
+v1.0.0
+ - Initial release
