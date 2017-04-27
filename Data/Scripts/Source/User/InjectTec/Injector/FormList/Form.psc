@@ -36,3 +36,8 @@ EndFunction
 Function revertBehavior()
 	InjectTec:Core:FormList.removeForm(getTarget(), getSource())
 EndFunction
+
+Bool Function verificationBehavior()
+{Only called after canLoadRecords() has been called, so this is safe.}
+	return verifyForm(getSource())
+EndFunction

@@ -85,3 +85,30 @@ EndFunction
 Function forceRevert()
 	revert(true)
 EndFunction
+
+Bool Function canVerify()
+	return false
+EndFunction
+
+Bool Function verificationBehavior()
+	return false
+EndFunction
+
+Bool Function verify(Bool bForceInjectOnFailure = false)
+	if (!canVerify() || !canLoadRecords())
+		return false
+	endif
+	
+	Bool bResult = verificationBehavior()
+	if (!bResult && bForceInjectOnFailure)
+		forceInject()
+	endif
+	clear() ; this logic required loading forms, so they're going to need to be purged again
+	return bResult
+EndFunction
+
+Event OnQuestInit()
+{Useful for just initiating injections right off the bat if they're not part of a larger logical package.}
+	inject()
+	Stop()
+EndEvent
