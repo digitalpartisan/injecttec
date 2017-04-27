@@ -28,3 +28,16 @@ Function clear()
 {Doesn't call parent.clear() to avoid warning in debug logs.}
 	flTarget = None
 EndFunction
+
+Bool Function canVerify()
+	return true
+EndFunction
+
+Bool Function verifyForm(form fVerify)
+{Only called after canLoadRecords() has been called, so this is safe.}
+	if (None == fVerify)
+		return false
+	endif
+
+	return getTarget().HasForm(fVerify)
+EndFunction

@@ -21,3 +21,7 @@ EndFunction
 Bool Function leveled(Form fTarget) Global
 	return Loggout.log(InjectTec:Logger.getName(), "leveled item: " + fTarget, getTags())
 EndFunction
+
+Bool Function logArray(Form fTarget, Form[] fRemovals) Global
+	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " removing: " + fRemovals, getTags())
+EndFunction

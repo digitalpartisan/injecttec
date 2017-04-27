@@ -18,6 +18,16 @@ Function addFormList(FormList flTarget, FormList flItems) Global
 	EndWhile
 EndFunction
 
+Function addFormArray(FormList flTarget, Form[] fForms) Global
+{Adds the Form records in fForms to the FormList flTarget.}
+	InjectTec:Logger:Injection.logArray(flTarget, fForms)
+	Int iCounter = 0
+	While (iCounter < fForms.Length)
+		flTarget.addForm(fForms[iCounter])
+		iCounter += 1
+	EndWhile
+EndFunction
+
 Function removeForm(FormList flTarget, Form fRecord) Global
 {Trivial, except for the logging.  Useful for debugging.}
 	InjectTec:Logger:Reversion.log(flTarget, fRecord)
@@ -33,4 +43,13 @@ Function removeFormList(FormList flTarget, FormList flForms) Global
 		flTarget.RemoveAddedForm(flForms.GetAt(iCounter))
 		iCounter += 1
 	endwhile
+EndFunction
+
+Function removeFormArray(FormList flTarget, Form[] fForms) Global
+	InjectTec:Logger:Reversion.logArray(flTarget, fForms)
+	Int iCounter = 0
+	While (iCounter < fForms.Length)
+		flTarget.RemoveAddedForm(fForms[iCounter])
+		iCounter += 1
+	EndWhile
 EndFunction

@@ -50,3 +50,9 @@ EndFunction
 Function forceRevert()
 	revert(true)
 EndFunction
+
+Event OnQuestInit()
+{Useful for just initiating injections right off the bat if they're not part of a larger logical package.}
+	inject()
+	Stop()
+EndEvent

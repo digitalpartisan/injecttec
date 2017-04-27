@@ -14,9 +14,9 @@ Group SourceSettings
 EndGroup
 
 Group Metadata
-	Int[] Property Levels Auto Const
+	Int[] Property Levels Auto Const Mandatory
 	{An Int array which has a specific (and likely, unique) level setting for each Form record in the myAdditions Form property.  See InjectTec:Core:Leveled.addFormListGranular() for details.}
-	Int[] Property Quantities Auto Const
+	Int[] Property Quantities Auto Const Mandatory
 	{An Int array which has a specific (and likely, unique) quantity setting for each Form records in the myAdditions Form property.  See InjectTec:Core:Leveled.addFormListGranular() for details.}
 EndGroup
 
