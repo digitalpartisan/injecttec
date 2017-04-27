@@ -1,5 +1,8 @@
+v1.2.0
+Expanded for Inject-Tec v1.2.0
+
 v1.1.0
- - Tested against InjectTec v1.1.0
+Tested against Inject-Tec v1.1.0
 
 v1.0.0
- - Initial release
+Initial release
