@@ -1,6 +1,11 @@
+v1.2.0
+Added injection verification capability
+Added remote form ID array injection capability
+Added quest startup event hooking for injection and bulk injector objects
+
 v1.1.0
- - Incorporated use of Papyrus' script flags
- - Incorporated use of Loggout for improved debugging
+Incorporated use of Papyrus' script flags
+Incorporated use of Loggout for improved debugging
 
 v1.0.0
- - Initial release
+Initial release
