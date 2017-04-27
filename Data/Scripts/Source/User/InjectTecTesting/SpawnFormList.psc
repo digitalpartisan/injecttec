@@ -4,6 +4,8 @@ ObjectReference Property FormListContainer Auto Const
 FormList Property ListToSpawn Auto Const
 
 Event OnActivate(ObjectReference akActionRef)
+	Utility.Wait(0.25)
+
 	FormListContainer.Reset()
 
 	Int iCounter = 0
