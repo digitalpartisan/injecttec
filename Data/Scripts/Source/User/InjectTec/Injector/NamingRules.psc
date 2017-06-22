@@ -35,13 +35,11 @@ InstanceNamingRules Function getSource()
 EndFunction
 
 Bool Function canLoadTarget()
-{Returns a boolean value indicating whether or not the targetted InstanceNamingRules record can be found and saves the InstanceNamingRules for use in injection should it load.}
 	innrTarget = InjectTec:Loader:NamingRules.load(isTargetLocal, targetRules, targetPlugin, targetID)
 	return (None != innrTarget)
 EndFunction
 
 Bool Function canLoadSource()
-{Returns a boolean value indicating whether or not the InstanceNamingRules source record can be found and saves the InstanceNamingRules for use in injection should it load.}
 	innrAdditions = InjectTec:Loader:NamingRules.load(isSourceLocal, sourceRules, sourcePlugin, sourceID)
 	return (None != innrAdditions)
 EndFunction

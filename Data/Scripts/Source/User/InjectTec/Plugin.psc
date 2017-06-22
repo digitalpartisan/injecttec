@@ -3,7 +3,7 @@ Scriptname InjectTec:Plugin extends Quest Hidden
 
 String Function getFilename()
 {Override this method based on how the filename representing this plugin should be decided.}
-	Debug.TraceStack("[InjectTec][Plugin] get filename logic is not implemented")
+	InjectTec:Logger:Plugin.behaviorUndefined(self, "getFilename()")
 	return ""
 EndFunction
 
@@ -17,7 +17,25 @@ Form Function lookupForm(Int iFormID)
 	return InjectTec:Core:Plugin.fetchForm(getFilename(), iFormID)
 EndFunction
 
-FormList Function lookupFormlist(Int iFormID)
+Form[] Function lookupForms(Int[] iaFormIDs)
+{Returns an array of Form records from this particular plugin matching the IDs in iaFormIDs or None if one or more Form records cannot be located.}
+	Form[] faResults = new Form[0]
+	Int iCounter = 0
+	Form fNew = None
+	
+	While (iCounter < iaFormIDs.Length)
+		fNew = lookupForm(iaFormIDs[iCounter])
+		if (!fNew)
+			return None
+		endif
+		faResults.Add(fNew)
+		iCounter += 1
+	EndWhile
+	
+	return faResults
+EndFunction
+
+FormList Function lookupFormList(Int iFormID)
 {See InjectTec:Core:Plugin.fetchFormList()}
 	return InjectTec:Core:Plugin.fetchFormList(getFilename(), iFormID)
 EndFunction

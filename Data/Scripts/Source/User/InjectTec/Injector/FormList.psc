@@ -1,5 +1,5 @@
 Scriptname InjectTec:Injector:FormList extends InjectTec:Injector Hidden
-{Implementation of injection into FormList records.}
+{Implementation of injection into FormList records.  See child scripts for details.}
 
 Group TargetSettings
 	Bool Property isTargetLocal = true Auto Const
@@ -19,7 +19,6 @@ FormList Function getTarget()
 EndFunction
 
 Bool Function canLoadTarget()
-{Returns a boolean value indicating whether or not the targetted FormList record can be found and saves the FormList for use in injection should it load.}
 	flTarget = InjectTec:Loader:FormList.load(isTargetLocal, targetList, targetPlugin, targetID)
 	return (None != flTarget)
 EndFunction
@@ -31,13 +30,4 @@ EndFunction
 
 Bool Function canVerify()
 	return true
-EndFunction
-
-Bool Function verifyForm(form fVerify)
-{Only called after canLoadRecords() has been called, so this is safe.}
-	if (None == fVerify)
-		return false
-	endif
-
-	return getTarget().HasForm(fVerify)
 EndFunction

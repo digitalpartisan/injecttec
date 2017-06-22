@@ -15,11 +15,11 @@ EndGroup
 Form fAddition = None
 
 Form Function getSource()
+{Because variables are private and child scripts can't see them.}
 	return fAddition
 EndFunction
 
 Bool Function canLoadSource()
-{Returns a boolean value indicating whether or not the Form source record can be found and saves the Form for use in injection should it load.}
 	fAddition = InjectTec:Loader:Form.load(isSourceLocal, sourceForm, sourcePlugin, sourceID)
 	return (None != fAddition)
 EndFunction
@@ -39,5 +39,5 @@ EndFunction
 
 Bool Function verificationBehavior()
 {Only called after canLoadRecords() has been called, so this is safe.}
-	return verifyForm(getSource())
+	return InjectTec:Core:FormList.verifyForm(getTarget(), getSource())
 EndFunction

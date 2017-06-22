@@ -19,7 +19,6 @@ LeveledItem Function getTarget()
 EndFunction
 
 Bool Function canLoadTarget()
-{Returns a boolean value indicating whether or not the targetted LeveledItem record can be found and saves the LeveledItem for use in injection should it load.}
 	liTarget = InjectTec:Loader:Leveled.load(isTargetLocal, targetLeveled, targetPlugin, targetID)
 	return (None != liTarget)
 EndFunction

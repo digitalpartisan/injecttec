@@ -33,3 +33,7 @@ EndFunction
 Bool Function couldNotCast(String sFilename, Int iFormID, String sType) Global
 	return error("could not cast lookup " + buildLookupReference(sFilename, iFormID) + " to " + sType)
 EndFunction
+
+Bool Function behaviorUndefined(InjectTec:Plugin pluginObject, String sBehavior) Global
+	return warn(pluginObject + " " + sBehavior + " behavior is not defined")
+EndFunction

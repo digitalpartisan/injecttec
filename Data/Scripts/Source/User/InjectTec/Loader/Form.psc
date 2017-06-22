@@ -10,6 +10,19 @@ Form Function load(Bool bLocal = true, Form myForm = None, InjectTec:Plugin myPl
 	endif
 EndFunction
 
+Form[] Function loadArray(InjectTec:Plugin myPlugin = None, Int[] iaMyIDs = None) Global
+{Returns an array of From records if the forms having IDs in iaMyIDs can be found in plugin myPlugin and None otherwise.}
+	if (!myPlugin)
+		return None
+	endif
+	
+	if (None == iaMyIDs)
+		return None
+	endif
+	
+	return myPlugin.lookupForms(iaMyIDs)
+EndFunction	
+
 Form Function get()
 	return load(false, None, RemotePlugin, RemoteID)
 EndFunction
