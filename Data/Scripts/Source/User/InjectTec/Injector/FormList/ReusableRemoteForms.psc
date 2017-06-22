@@ -1,11 +1,9 @@
-Scriptname InjectTec:Injector:FormList:RemoteForms extends InjectTec:Injector:FormList
-{Attach this script in the editor to inject append multiple remote Forms to a targetted FormList record.}
+Scriptname InjectTec:Injector:FormList:ReusableRemoteForms extends InjectTec:Injector:FormList
+{Attach this script in the editor to inject append a reusable remote forms list to a targetted FormList record.}
 
 Group SourceSettings
-	InjectTec:Plugin Property SourcePlugin = None Auto Const Mandatory
-	{The plugin containing the sourced Form IDs.}
-	Int[] Property SourceIDs Auto Const Mandatory
-	{The record IDs of the sourced Forms.}
+	InjectTec:ReusableRemoteForms Property RemoteForms Auto Const Mandatory
+	{The set of forms to load for sourcing.}
 EndGroup
 
 Form[] faAdditions = None
@@ -15,7 +13,7 @@ Form[] Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-	faAdditions = SourcePlugin.lookupForms(SourceIDs)
+	faAdditions = RemoteForms.loadAll()
 	return (None != faAdditions)
 EndFunction
 

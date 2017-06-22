@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:FormList extends InjectTec:Injector:Leveled
+Scriptname InjectTec:Injector:Leveled:FormList extends InjectTec:Injector:Leveled:Abstract
 {Attach this script in the editor to inject append the Form records from a FormList source record to a targetted LeveledItem record.}
 
 Group SourceSettings
@@ -12,17 +12,6 @@ Group SourceSettings
 	{The record ID of the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
 EndGroup
 
-Group Metadata
-	Int Property Level = 1 Auto Const
-	{The level at which the FormList records should be added to the LeveledItem.  This value will be used unless the LevelVariable property is populated.}
-	Int Property Quantity = 1 Auto Const
-	{The quantity to use when adding to the targetted LeveledItem.  This value will be used unless the QuantityVariable property is populated.}
-	GlobalVariable Property LevelVariable = None Auto Const
-	{Consider using this property instead of Level if you are performing many injections which should all have the same level.  This way, the level can be easily changed by editing only the GlobalVariable record and not many InjectTec:Injector objects.}
-	GlobalVariable Property QuantityVariable = None Auto Const
-	{Consider using this property instead of Quantity if you are performing many injections which should all have the same quantity.  This way, the quantity can be easily changed by editing only the GlobalVariable record and not many InjectTec:Injector objects.}
-EndGroup
-
 FormList flAdditions = None
 
 FormList Function getSource()
@@ -30,7 +19,6 @@ FormList Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-{Returns a boolean value indicating whether or not the FormList source record can be found and saves the FormList for use in injection should it load.}
 	flAdditions = InjectTec:Loader:FormList.load(isSourceLocal, sourceFormList, sourcePlugin, sourceID)
 	return (None != flAdditions)
 EndFunction
@@ -38,22 +26,6 @@ EndFunction
 Function clear()
 	flAdditions = None
 	parent.clear()
-EndFunction
-
-Int Function getLevel()
-	if (LevelVariable == None)
-		return Level
-	else
-		return LevelVariable.getValueInt()
-	endif
-EndFunction
-
-Int Function getQuantity()
-	if (QuantityVariable == None)
-		return Quantity
-	else
-		return QuantityVariable.getValueInt()
-	endif
 EndFunction
 
 Function injectBehavior()

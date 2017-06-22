@@ -52,7 +52,11 @@ Function forceRevert()
 EndFunction
 
 Event OnQuestInit()
-{Useful for just initiating injections right off the bat if they're not part of a larger logical package.}
+{Useful for initiating injections right off the bat if they're not part of a larger logical package and/or if they're part of a mod that has an install / uninstall quest.}
 	inject()
-	Stop()
+EndEvent
+
+Event OnQuestShutdown()
+{Useful for reverting the injections if they're not part of a larger logical package and/or if they're part of a mod that has an install / uninstall quest.}
+	revert()
 EndEvent

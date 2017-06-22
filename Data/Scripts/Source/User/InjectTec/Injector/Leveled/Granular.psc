@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:Granular extends InjectTec:Injector:Leveled
+Scriptname InjectTec:Injector:Leveled:Granular extends InjectTec:Injector:Leveled:GranularAbstract
 {Attach this script in the editor to inject append the Form records from a FormList source record to a targetted LeveledItem record with granular control over which levels and quantities are used for each Form record added.
 See notes on InjectTec:Core:Leveled.addFormListGranular() for specifics.}
 
@@ -9,15 +9,8 @@ Group SourceSettings
 	{The FormList record to source for injection.  Set this value if the value of isSourceLocal is true.}
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
-	Int Property sourceID = 0 Auto Const
+	Int Property SourceID = 0 Auto Const
 	{The record ID of the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
-EndGroup
-
-Group Metadata
-	Int[] Property Levels Auto Const Mandatory
-	{An Int array which has a specific (and likely, unique) level setting for each Form record in the myAdditions Form property.  See InjectTec:Core:Leveled.addFormListGranular() for details.}
-	Int[] Property Quantities Auto Const Mandatory
-	{An Int array which has a specific (and likely, unique) quantity setting for each Form records in the myAdditions Form property.  See InjectTec:Core:Leveled.addFormListGranular() for details.}
 EndGroup
 
 FormList flAdditions = None
@@ -27,7 +20,6 @@ FormList Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-{Returns a boolean value indicating whether or not the FormList source record can be found and saves the FormList for use in injection should it load.}
 	flAdditions = InjectTec:Loader:FormList.load(isSourceLocal, sourceFormList, sourcePlugin, sourceID)
 	return (None != flAdditions)
 EndFunction

@@ -87,14 +87,18 @@ Function forceRevert()
 EndFunction
 
 Bool Function canVerify()
+{Generally, this is only true of FormList targets since no other types allow for detailed inspection.}
 	return false
 EndFunction
 
 Bool Function verificationBehavior()
+{Override to indicate how an injection object should verify (if at all) whether or not it has taken effect.  This function is not expected to be called (or even overridden if verification is not possible.}
+	InjectTec:Logger:Injector.behaviorUndefined(self, "verificationBehavior()")
 	return false
 EndFunction
 
 Bool Function verify(Bool bForceInjectOnFailure = false)
+{Returns true if this injector object can successfully verify that the injection it contains has taken effect and returns false otherwise.  Optionally allows forceful injection if appropriate.}
 	if (!canVerify() || !canLoadRecords())
 		return false
 	endif
@@ -103,12 +107,18 @@ Bool Function verify(Bool bForceInjectOnFailure = false)
 	if (!bResult && bForceInjectOnFailure)
 		forceInject()
 	endif
+	
 	clear() ; this logic required loading forms, so they're going to need to be purged again
+	
 	return bResult
 EndFunction
 
 Event OnQuestInit()
-{Useful for just initiating injections right off the bat if they're not part of a larger logical package.}
+{Useful for initiating the injection right off the bat if it's not part of a larger logical package and/or if it's part of a mod that has an install / uninstall quest.}
 	inject()
-	Stop()
+EndEvent
+
+Event OnQuestShutdown()
+{Useful for reverting the injection if it's not part of a larger logical package and/or if it's part of a mod that has an install / uninstall quest.}
+	revert()
 EndEvent
