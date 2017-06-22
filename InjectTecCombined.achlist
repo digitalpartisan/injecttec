@@ -6,12 +6,18 @@
 	"Data\\Scripts\\InjectTec\\Core\\Plugin.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\FormList\\form.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\FormList\\FormList.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\FormList\\RemoteForms.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\FormList\\ReusableRemoteForms.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\Abstract.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\Custom.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\Form.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\FormList.pex",
-	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\RemoteForms.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\Granular.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\GranularAbstract.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\RemoteForms.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\RemoteFormsGranular.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\ReusableRemoteForms.pex",
+	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled\\ReusableRemoteFormsGranular.pex",
 	"Data\\Scripts\\InjectTec\\Injector\\Bulk.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\FormList.pex",
 	"Data\\SCRIPTS\\InjectTec\\Injector\\Leveled.pex",
@@ -30,5 +36,6 @@
 	"Data\\SCRIPTS\\injecttec\\injector.pex",
 	"Data\\Scripts\\InjectTec\\Loader.pex",
 	"Data\\Scripts\\InjectTec\\Logger.pex",
-	"Data\\SCRIPTS\\injecttec\\plugin.pex"
+	"Data\\SCRIPTS\\injecttec\\plugin.pex",
+	"Data\\SCRIPTS\\InjectTec\\ReusableRemoteForms.pex"
 ]
