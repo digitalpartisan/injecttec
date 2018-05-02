@@ -1,6 +1,8 @@
 Scriptname InjectTec:Plugin extends Quest Hidden
 {Base class for scripts which represent a plugin from which forms should be loaded or a group of plugins which contain variations on forms with the same form IDs which should be loaded from one of its versions.}
 
+Import InjectTec:HexidecimalLogic
+
 String Function getFilename()
 {Override this method based on how the filename representing this plugin should be decided.}
 	InjectTec:Logger:Plugin.behaviorUndefined(self, "getFilename()")
@@ -33,6 +35,10 @@ Form[] Function lookupForms(Int[] iaFormIDs)
 	EndWhile
 	
 	return faResults
+EndFunction
+
+Form[] Function lookupFormsFromDigitSets(DigitSet[] digitSets)
+	return lookupForms(getDigitSetValues(digitSets))
 EndFunction
 
 FormList Function lookupFormList(Int iFormID)

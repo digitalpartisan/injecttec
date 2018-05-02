@@ -13,17 +13,17 @@ Group Metadata
 EndGroup
 
 Int Function getLevel()
-	if (LevelVariable == None)
-		return Level
-	else
+	if (LevelVariable)
 		return LevelVariable.getValueInt()
+	else
+		return Level
 	endif
 EndFunction
 
 Int Function getQuantity()
-	if (QuantityVariable == None)
-		return Quantity
-	else
+	if (QuantityVariable)
 		return QuantityVariable.getValueInt()
+	else
+		return Quantity
 	endif
 EndFunction

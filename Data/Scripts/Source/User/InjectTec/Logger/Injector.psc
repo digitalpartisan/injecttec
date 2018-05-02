@@ -22,6 +22,14 @@ Bool Function behaviorUndefined(InjectTec:Injector injectorObject, String sBehav
 	return warn(injectorObject + " " + sBehavior + " behavior is not defined")
 EndFunction
 
+Bool Function couldNotLoadTarget(InjectTec:Injector injectorRef) Global
+	return error(injectorRef + " could not load its target")
+EndFunction
+
+Bool Function couldNotLoadSource(InjectTec:Injector injectorRef) Global
+	return error(injectorRef + " could not load its source")
+EndFunction
+
 Bool Function injecting(InjectTec:Injector injectorObject, Bool bForce) Global
 	String sMessage = injectorObject + " injecting"
 	if (bForce)

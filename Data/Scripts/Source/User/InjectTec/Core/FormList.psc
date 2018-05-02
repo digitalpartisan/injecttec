@@ -3,13 +3,13 @@ Scriptname InjectTec:Core:FormList Hidden Const
 
 Function addForm(FormList flTarget, Form fItem) Global
 {Trivial, except for the logging.  Useful for debugging.}
-	InjectTec:Logger:Injection.log(flTarget, fItem)
+	InjectTec:Logger:Injection.logInjection(flTarget, fItem)
 	flTarget.addForm(fItem)
 EndFunction
 
 Function addFormList(FormList flTarget, FormList flItems) Global
 {Adds the Form records in flItems to the FormList flTarget.}
-	InjectTec:Logger:Injection.log(flTarget, flItems)
+	InjectTec:Logger:Injection.logInjection(flTarget, flItems)
 	Int iCounter = 0
 	Int iSize = flItems.getSize()
 	While (iCounter < iSize)
@@ -62,13 +62,13 @@ EndFunction
 
 Function removeForm(FormList flTarget, Form fRecord) Global
 {Trivial, except for the logging.  Useful for debugging.}
-	InjectTec:Logger:Reversion.log(flTarget, fRecord)
+	InjectTec:Logger:Reversion.reverting(flTarget, fRecord)
 	flTarget.RemoveAddedForm(fRecord)
 EndFunction
 
 Function removeFormList(FormList flTarget, FormList flForms) Global
 {Removes the Form records in the flForms FormList from the flTarget FormList.}
-	InjectTec:Logger:Reversion.log(flTarget, flForms)
+	InjectTec:Logger:Reversion.reverting(flTarget, flForms)
 	Int iCounter = 0
 	Int iSize = flForms.GetSize()
 	while (iCounter < iSize)

@@ -1,11 +1,15 @@
 Scriptname InjectTec:Injector:FormList:RemoteForms extends InjectTec:Injector:FormList
 {Attach this script in the editor to inject append multiple remote Forms to a targetted FormList record.}
 
+Import InjectTec:HexidecimalLogic
+
 Group SourceSettings
 	InjectTec:Plugin Property SourcePlugin = None Auto Const Mandatory
 	{The plugin containing the sourced Form IDs.}
-	Int[] Property SourceIDs Auto Const Mandatory
+	Int[] Property SourceIDs = None Auto Const
 	{The record IDs of the sourced Forms.}
+	DigitSet[] Property SourceDigitSets = None Auto Const
+	{Alternative to the SourceIDs property.  If you would rather not bother with the base 16 to base 10 conversions, set the hexidecimal digits here.}
 EndGroup
 
 Form[] faAdditions = None
@@ -15,8 +19,20 @@ Form[] Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-	faAdditions = SourcePlugin.lookupForms(SourceIDs)
-	return (None != faAdditions)
+	if (SourceDigitSets)
+		faAdditions = SourcePlugin.lookupFormsFromDigitSets(SourceDigitSets)
+	elseif (SourceIDs)
+		faAdditions = SourcePlugin.lookupForms(SourceIDs)
+	else
+		faAdditions = None
+	endif
+	
+	if (faAdditions)
+		return true
+	else
+		InjectTec:Logger:Injector.couldNotLoadSource(self)
+		return false
+	endif
 EndFunction
 
 Function clear()

@@ -26,7 +26,7 @@ EndFunction
 
 Function addForm(LeveledItem liTarget, Form fItem, Int iLevel = 1, Int iAmount = 1) Global
 {Trivial, except for logging.  Useful for debugging.}
-	InjectTec:Logger:Injection.log(liTarget, fItem)
+	InjectTec:Logger:Injection.logLeveledInjection(liTarget, fItem, iLevel, iAmount)
 	liTarget.AddForm(fItem, iLevel, iAmount)
 EndFunction
 
@@ -50,17 +50,17 @@ Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int
 	Int iCounter = 0
 	Int iSize = flForms.getSize()
 	While (iCounter < iSize)
-		liTarget.AddForm(flForms.getAt(iCounter), iLevel, iAmount)
+		addForm(liTarget, flForms.getAt(iCounter), iLevel, iAmount)
 		iCounter += 1
 	EndWhile
 EndFunction
 
-Function addForms(LeveledItem liTarget, Form[] faForms, Int iLevel = 1, Int iAmount = 2) Global
+Function addForms(LeveledItem liTarget, Form[] faForms, Int iLevel = 1, Int iAmount = 1) Global
 {Adds the Form records in faForms to the LeveledItem liTarget.}
-	InjectTec:Logger:Injection.logArray(liTarget, faForms)
+	InjectTec:Logger:Injection.leveledArray(liTarget, faForms, iLevel, iAmount)
 	Int iCounter = 0
 	While (iCounter < faForms.Length)
-		liTarget.addForm(faForms[iCounter], iLevel, iAmount)
+		addForm(liTarget, faForms[iCounter], iLevel, iAmount)
 		iCounter += 1
 	EndWhile
 EndFunction
@@ -77,7 +77,7 @@ Function addFormListGranular(LeveledItem liTarget, FormList flForms, Int[] iaLev
 	
 	InjectTec:Logger:Injection.leveledGranular(liTarget, flForms, iaLevels, iaAmounts)
 	While (iCounter < iSize)
-		liTarget.AddForm(flForms.getAt(iCounter), iaLevels[iCounter], iaAmounts[iCounter])
+		addForm(liTarget, flForms.getAt(iCounter), iaLevels[iCounter], iaAmounts[iCounter])
 		iCounter += 1
 	EndWhile
 EndFunction
@@ -93,7 +93,7 @@ Function addFormsGranular(LeveledItem liTarget, Form[] faForms, Int[] iaLevels, 
 	
 	InjectTec:Logger:Injection.leveledGranularArray(liTarget, faForms, iaLevels, iaAmounts)
 	While (iCounter < faForms.Length)
-		liTarget.AddForm(faForms[iCounter], iaLevels[iCounter], iaAmounts[iCounter])
+		addForm(liTarget, faForms[iCounter], iaLevels[iCounter], iaAmounts[iCounter])
 		iCounter += 1
 	EndWhile
 EndFunction

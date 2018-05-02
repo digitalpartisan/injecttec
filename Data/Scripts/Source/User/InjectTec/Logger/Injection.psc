@@ -24,8 +24,8 @@ String Function collapseInts(Int[] iaValues) Global
 	return sResult
 EndFunction
 
-Bool Function log(Form fTarget, Form fAddition) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " adding: " + fAddition, getTags())
+Bool Function log(String sMessage) Global
+	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
 Bool Function warn(String sMessage) Global
@@ -36,16 +36,28 @@ Bool Function error(String sMessage) Global
 	return Loggout.error(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
+Bool Function logInjection(Form fTarget, Form fAddition) Global
+	return log("target: " + fTarget + " adding: " + fAddition)
+EndFunction
+
+Bool Function logLeveledInjection(LeveledItem liTarget, Form fAddition, Int iLevel, Int iAmount) Global
+	return log("target: " + liTarget + " adding: " + fAddition + " level: " + iLevel + " amount: " + iAmount)
+EndFunction
+
 Bool Function logArray(Form fTarget, Form[] faAdditions) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " adding: " + faAdditions, getTags())
+	return log("target: " + fTarget + " adding: " + faAdditions)
 EndFunction
 
 Bool Function leveled(LeveledItem liTarget, FormList flForms, Int iLevel, Int iAmount) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + liTarget + " adding: " + flForms + " level: " + iLevel + " amount: " + iAmount, getTags())
+	return log("target: " + liTarget + " adding: " + flForms + " level: " + iLevel + " amount: " + iAmount)
+EndFunction
+
+Bool Function leveledArray(LeveledItem liTarget, Form[] faForms, Int iLevel, Int iAmount) Global
+	return log("target: " + liTarget + " adding: " + faForms + " level: " + iLevel + " amount: " + iAmount)
 EndFunction
 
 Bool Function leveledGranular(LeveledItem liTarget, FormList flForms, Int[] iaLevels, Int[] iaAmounts) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + liTarget + " adding: " + flForms + " levels: " + collapseInts(iaLevels) + " amounts: " + collapseInts(iaAmounts), getTags())
+	return log("target: " + liTarget + " adding: " + flForms + " levels: " + collapseInts(iaLevels) + " amounts: " + collapseInts(iaAmounts))
 EndFunction
 
 Bool Function leveledGranularSizeMismatch(LeveledItem liTarget, FormList flForms, Int[] iaLevels, Int[] iaAmounts) Global
@@ -53,7 +65,7 @@ Bool Function leveledGranularSizeMismatch(LeveledItem liTarget, FormList flForms
 EndFunction
 
 Bool Function leveledGranularArray(LeveledItem liTarget, Form[] faForms, Int[] iaLevels, Int[] iaAmounts) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + liTarget + " adding: " + faForms + " levels: " + collapseInts(iaLevels) + " amounts: " + collapseInts(iaAmounts), getTags())
+	return log("target: " + liTarget + " adding: " + faForms + " levels: " + collapseInts(iaLevels) + " amounts: " + collapseInts(iaAmounts))
 EndFunction
 
 Bool Function leveledGranularArraySizeMismatch(LeveledItem liTarget, Form[] faForms, Int[] iaLevels, Int[] iaAmounts) Global

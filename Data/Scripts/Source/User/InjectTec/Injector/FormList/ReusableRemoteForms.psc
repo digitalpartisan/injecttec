@@ -14,7 +14,12 @@ EndFunction
 
 Bool Function canLoadSource()
 	faAdditions = RemoteForms.loadAll()
-	return (None != faAdditions)
+	if (faAdditions)
+		return true
+	else
+		InjectTec:Logger:Injector.couldNotLoadSource(self)
+		return false
+	endif
 EndFunction
 
 Function clear()

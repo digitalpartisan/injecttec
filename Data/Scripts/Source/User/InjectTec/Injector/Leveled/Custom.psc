@@ -40,6 +40,7 @@ Bool Function canLoadSource()
 		currentForm = CustomForms[iCounter]
 		loadedForm = InjectTec:Loader:Form.load(isSourceLocal, currentForm.SourceForm, sourcePlugin, currentForm.SourceID)
 		if (None == loadedForm)
+			InjectTec:Logger:Injector.couldNotLoadSource(self)
 			return false
 		endif
 		
