@@ -1,3 +1,6 @@
+v1.4.0
+Added support for using base 16 IDs to remote load forms instead of forcing a manual conversion to base 10
+
 v1.3.0
 Added several new injection types
 Corrected and enhanced quest startup / shutdown event detection behavior for injection (and bulok injection) scripts attached to quests which actually run

@@ -6,8 +6,8 @@ String[] Function getTags() Global
 	return tags
 EndFunction
 
-Bool Function log(Form fTarget, Form fRemoving) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " removing: " + fRemoving, getTags())
+Bool Function log(String sMessage) Global
+	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
 Bool Function warn(String sMessage) Global
@@ -18,10 +18,14 @@ Bool Function error(String sMessage) Global
 	return Loggout.error(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
+Bool Function reverting(Form fTarget, Form fRemoving) Global
+	return log("target: " + fTarget + " removing: " + fRemoving)
+EndFunction
+
 Bool Function leveled(Form fTarget) Global
-	return Loggout.log(InjectTec:Logger.getName(), "leveled item: " + fTarget, getTags())
+	return log("leveled item: " + fTarget)
 EndFunction
 
 Bool Function logArray(Form fTarget, Form[] faRemovals) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " removing: " + faRemovals, getTags())
+	return log("target: " + fTarget + " removing: " + faRemovals)
 EndFunction
