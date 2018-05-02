@@ -1,13 +1,13 @@
 Scriptname InjectTecTesting:Verifier extends ObjectReference
 
-InjectTec:Injector Property Injector Auto Const
+InjectTec:Injector Property Injector Auto Const Mandatory
+Message Property InjectTecTestingValidationMessageFalse Auto Const Mandatory
+Message Property InjectTecTestingValidationMessageTrue Auto Const Mandatory
 
 Event OnActivate(ObjectReference akActionRef)
-	String sMessage = "Result: "
 	if (Injector.verify())
-		sMessage += "true"
+		InjectTecTestingValidationMessageTrue.Show()
 	else
-		sMessage += "false"
+		InjectTecTestingValidationMessageFalse.Show()
 	endif
-	Debug.Notification(sMessage)
 EndEvent
