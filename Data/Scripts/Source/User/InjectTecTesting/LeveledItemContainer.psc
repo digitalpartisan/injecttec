@@ -1,9 +1,7 @@
-Scriptname InjectTecTesting:LeveledItemContainer extends ObjectReference Const
+Scriptname InjectTecTesting:LeveledItemContainer extends Quest
 
-Event OnOpen(ObjectReference akActionRef)
-	Reset()
-EndEvent
+ObjectReference Property ContainerRef Auto Const Mandatory
 
-Event OnClose(ObjectReference akActionRef)
-	Reset()
-EndEvent
+Function process()
+	ContainerRef.Reset()
+EndFunction
