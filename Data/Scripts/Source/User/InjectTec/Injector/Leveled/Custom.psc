@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:Custom extends InjectTec:Injector:Leveled
+Scriptname InjectTec:Injector:Leveled:Custom extends InjectTec:Injector:Leveled Conditional
 {A different way of going about a granular injection to a leveled list.  Can use remote forms, but note to set the isSourceLocal to false, provide a value for sourcePlugin, and set the SourceIDs on the CustomForms correctly.}
 
 Import InjectTec:Core:Leveled
@@ -7,7 +7,7 @@ Struct CustomFormSetting
 	Form SourceForm = None
 	{The Form record to inject.  Set this if the Form you wish to use is immediately available to your plugin or one of its hard requirements.}
 	Int SourceID = 0
-	{The Base 10 ID of the form you wish to inject.  Set this if the Form you wish to use is not immediately available to your plugin or one of its hard requirements.}
+	{The Base 10 ID of the form you wish to inject.  Set this if the Form you wish to use is not immediately available to your plugin or one of its hard dependencies.}
 	Int Level = 1
 	{The level at which the targetted LeveledItem list should spawn the Form being injected.}
 	Int Amount = 1

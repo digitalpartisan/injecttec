@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:FormList:ReusableRemoteForms extends InjectTec:Injector:FormList
+Scriptname InjectTec:Injector:FormList:ReusableRemoteForms extends InjectTec:Injector:FormList Conditional
 {Attach this script in the editor to inject append a reusable remote forms list to a targetted FormList record.}
 
 Group SourceSettings
