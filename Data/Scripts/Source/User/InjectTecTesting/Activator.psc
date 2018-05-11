@@ -18,10 +18,6 @@ Function cycleContainers()
 	endif
 EndFunction
 
-Event OnActivate(ObjectReference akActionRef)
-	
-EndEvent
-
 Auto State Inject
 	Event OnBeginState(String asOldState)
 		SetActivateTextOverride(InjectTecTestingActivateLabelInject)
@@ -30,7 +26,9 @@ Auto State Inject
 
 	Event OnActivate(ObjectReference akActionRef)
 		Injector.inject()
-		GoToState("Revert")
+		if (Injector.getHasRun())
+			GoToState("Revert")
+		endif
 	EndEvent
 EndState
 
@@ -42,6 +40,8 @@ State Revert
 
 	Event OnActivate(ObjectReference akActionRef)
 		Injector.revert()
-		GoToState("Inject")
+		if (!Injector.getHasRun())
+			GoToState("Inject")
+		endif
 	EndEvent
 EndState
