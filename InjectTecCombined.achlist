@@ -21,6 +21,7 @@
 	"Data\\Scripts\\InjectTec\\Injector\\Leveled\\ReusableRemoteFormsGranular.pex",
 	"Data\\Scripts\\InjectTec\\Injector\\Leveled.pex",
 	"Data\\Scripts\\InjectTec\\Injector\\NamingRules.pex",
+	"Data\\Scripts\\InjectTec\\Injector\\PluginInstalled.pex",
 	"Data\\Scripts\\InjectTec\\Injector.pex",
 	"Data\\Scripts\\InjectTec\\Loader\\Form.pex",
 	"Data\\Scripts\\InjectTec\\Loader\\FormList.pex",
