@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled extends InjectTec:Injector Hidden
+Scriptname InjectTec:Injector:Leveled extends InjectTec:Injector Hidden Conditional
 {Implementation of injection into LeveledItem records.}
 
 Import InjectTec:HexidecimalLogic

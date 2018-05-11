@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:NamingRules extends InjectTec:Injector
+Scriptname InjectTec:Injector:NamingRules extends InjectTec:Injector Conditional
 {Implementation of injection into InstanceNamingRule records.}
 
 Import InjectTec:HexidecimalLogic

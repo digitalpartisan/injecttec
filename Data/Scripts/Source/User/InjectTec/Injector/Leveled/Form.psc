@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:Form extends InjectTec:Injector:Leveled:Abstract
+Scriptname InjectTec:Injector:Leveled:Form extends InjectTec:Injector:Leveled:Abstract Conditional
 {Attach this script in the editor to inject append a Form source record to a targetted LeveledItem record.}
 
 Import InjectTec:HexidecimalLogic

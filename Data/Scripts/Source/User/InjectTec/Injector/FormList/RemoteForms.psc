@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:FormList:RemoteForms extends InjectTec:Injector:FormList
+Scriptname InjectTec:Injector:FormList:RemoteForms extends InjectTec:Injector:FormList Conditional
 {Attach this script in the editor to inject append multiple remote Forms to a targetted FormList record.}
 
 Import InjectTec:HexidecimalLogic

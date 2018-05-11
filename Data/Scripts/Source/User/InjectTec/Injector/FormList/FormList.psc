@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:FormList:FormList extends InjectTec:Injector:FormList
+Scriptname InjectTec:Injector:FormList:FormList extends InjectTec:Injector:FormList Conditional
 {Attach this script in the editor to inject append a FormList source record to a targetted FormList record.}
 
 Import InjectTec:HexidecimalLogic

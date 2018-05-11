@@ -1,7 +1,7 @@
-Scriptname InjectTec:Injector extends Quest Hidden
+Scriptname InjectTec:Injector extends Quest Hidden Conditional
 {Extend this script to provide easy access to the logic in the InjectTec library to objects in the Creation Kit editor.  See child scripts for specifics.}
 
-Bool bHasRun = false ; this should be based on Papyrus' script states and the like, but I didn't do that and now, save games with Injectors in them won't convert easily, so it's staying this way
+Bool bHasRun = false Conditional; this should be based on Papyrus' script states and the like, but I didn't do that and now, save games with Injectors in them won't convert easily, so it's staying this way
 
 Bool Function getHasRun()
 	return bHasRun

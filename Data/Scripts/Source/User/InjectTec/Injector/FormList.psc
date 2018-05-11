@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:FormList extends InjectTec:Injector Hidden
+Scriptname InjectTec:Injector:FormList extends InjectTec:Injector Hidden Conditional
 {Implementation of injection into FormList records.  See child scripts for details.}
 
 Import InjectTec:HexidecimalLogic

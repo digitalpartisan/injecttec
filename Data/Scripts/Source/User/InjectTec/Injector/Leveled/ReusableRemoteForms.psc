@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:ReusableRemoteForms extends InjectTec:Injector:Leveled:Abstract
+Scriptname InjectTec:Injector:Leveled:ReusableRemoteForms extends InjectTec:Injector:Leveled:Abstract Conditional
 
 Group SourceSettings
 	InjectTec:ReusableRemoteForms Property RemoteForms Auto Const Mandatory

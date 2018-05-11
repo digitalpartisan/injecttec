@@ -1,4 +1,4 @@
-Scriptname InjectTec:Injector:Leveled:GranularAbstract extends InjectTec:Injector:Leveled Hidden
+Scriptname InjectTec:Injector:Leveled:GranularAbstract extends InjectTec:Injector:Leveled Hidden Conditional
 {This is an abstraction for all granular level and amount leveled list injectors.  Note that this was written multipe versions after release and it's not reaonsable to expect mod authors to re-create large batches of injections.  Scripts extending this one are not named in the expected way.}
 
 Group Metadata
