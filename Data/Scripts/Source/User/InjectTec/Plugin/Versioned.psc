@@ -11,11 +11,12 @@ String Function getFilename()
 	While (iCounter < Files.Length)
 		InjectTec:Plugin:File file = Files[iCounter]
 		if (InjectTec:Core:Plugin.isPluginInstalled(file.Filename))
+			InjectTec:Logger:Plugin.foundVersion(self, file.Filename)
 			return file.Filename
 		endif
 		iCounter += 1
 	EndWhile
 	
-	Debug.Trace("[InjectTec][Plugin] versioned plugin detected no installed versions: " + self)
+	InjectTec:Logger:Plugin.noInstalledVersion(self)
 	return ""
 EndFunction

@@ -7,12 +7,12 @@ LeveledItem Function load(Bool bLocal = true, LeveledItem myLeveled = None, Inje
 {Syntacial sugar which enables InjectTec:Injector logic not to care how a LeveledItem record is accessed.  If the record is indicated to be true by bLocal, then myLeveled is returned.  Otherwise, the result of a record lookup using myPlugin and myID is returned.}
 	if (bLocal)
 		return myLeveled
+	endif
+	
+	if (digits)
+		return myPlugin.lookupLeveled(getDigitSetValue(digits))
 	else
-		if (digits)
-			return myPlugin.lookupLeveled(getDigitSetValue(digits))
-		else
-			return myPlugin.lookupLeveled(myID)
-		endif
+		return myPlugin.lookupLeveled(myID)
 	endif
 EndFunction
 
