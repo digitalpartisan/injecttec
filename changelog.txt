@@ -12,7 +12,7 @@ Removed redunant and less useful types of injectors
 
 v1.3.0
 Added several new injection types
-Corrected and enhanced quest startup / shutdown event detection behavior for injection (and bulok injection) scripts attached to quests which actually run
+Corrected and enhanced quest startup / shutdown event detection behavior for injection (and bulk injection) scripts attached to quests which actually run
 Internal refactors for less repeated code across similar injection types
 
 v1.2.0
