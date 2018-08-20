@@ -31,17 +31,9 @@ Bool Function couldNotLoadSource(InjectTec:Injector injectorRef) Global
 EndFunction
 
 Bool Function injecting(InjectTec:Injector injectorObject, Bool bForce) Global
-	String sMessage = injectorObject + " injecting"
-	if (bForce)
-		sMessage += " (forced)"
-	endif
-	return log(sMessage)
+	return log(Loggout.buildMessage(injectorObject + " injecting", bForce, "", " (forced)"))
 EndFunction
 
 Bool Function reverting(InjectTec:Injector injectorObject, Bool bForce) Global
-	String sMessage = injectorObject + " reverting"
-	if (bForce)
-		sMessage += " (forced)"
-	endif
-	return log(sMessage)
+	return log(Loggout.buildMessage(injectorObject + " reverting", bForce, "", " (forced)"))
 EndFunction

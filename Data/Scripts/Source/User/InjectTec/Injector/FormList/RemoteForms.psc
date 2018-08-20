@@ -19,12 +19,11 @@ Form[] Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
+	faAdditions = None
 	if (SourceDigitSets)
 		faAdditions = SourcePlugin.lookupFormsFromDigitSets(SourceDigitSets)
 	elseif (SourceIDs)
 		faAdditions = SourcePlugin.lookupForms(SourceIDs)
-	else
-		faAdditions = None
 	endif
 	
 	if (faAdditions)

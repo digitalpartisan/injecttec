@@ -10,8 +10,9 @@ String Function buildLookupReference(String sFilename, Int iFormID) Global
 	return "(" + sFilename + "," + iFormID + ")"
 EndFunction
 
-Bool Function log(Form fTarget, Form fAddition) Global
-	return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " adding: " + fAddition, getTags())
+Bool Function log(String sMessage) Global
+	;return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " adding: " + fAddition, getTags())
+	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
 Bool Function warn(String sMessage) Global
@@ -36,4 +37,12 @@ EndFunction
 
 Bool Function behaviorUndefined(InjectTec:Plugin pluginObject, String sBehavior) Global
 	return warn(pluginObject + " " + sBehavior + " behavior is not defined")
+EndFunction
+
+Bool Function foundVersion(InjectTec:Plugin pluginObject, String sFilename) Global
+	return log(pluginObject + " found installed version " + sFilename)
+EndFunction
+
+Bool Function noInstalledVersion(InjectTec:Plugin pluginObject) Global
+	return log(pluginObject + " found no installed versions")
 EndFunction
