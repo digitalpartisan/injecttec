@@ -113,6 +113,10 @@ Bool Function verify(Bool bForceInjectOnFailure = false)
 	return bResult
 EndFunction
 
+Bool Function forceVerify()
+	return verify(true)
+EndFunction
+
 Event OnQuestInit()
 {Useful for initiating the injection right off the bat if it's not part of a larger logical package and/or if it's part of a mod that has an install / uninstall quest.}
 	inject()
@@ -122,3 +126,148 @@ Event OnQuestShutdown()
 {Useful for reverting the injection if it's not part of a larger logical package and/or if it's part of a mod that has an install / uninstall quest.}
 	revert()
 EndEvent
+
+InjectTec:Injector[] Function injectorFormListToArray(FormList theList) Global
+	return Jiffy:Utility.formListToArray(theList) as InjectTec:Injector[]
+EndFunction
+
+Function bulkInject(InjectTec:Injector[] injections, Bool bForce = false) Global
+	if (!injections || !injections.Length)
+		return
+	endif
+	
+	Int iCounter = 0
+	InjectTec:Injector injector = None
+	while (iCounter < injections.Length)
+		injector = injections[iCounter] as InjectTec:Injector
+		if (injector)
+			injector.inject(bForce)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceInject(InjectTec:Injector[] injections) Global
+	bulkInject(injections, true)
+EndFunction
+
+Function bulkInjectList(FormList injectionList, Bool bForce = false) Global
+	if (!injectionList)
+		return
+	endif
+	
+	Int iSize = injectionList.GetSize()
+	if (!iSize)
+		return
+	endif
+	
+	InjectTec:Injector injector = None
+	Int iCounter = 0
+	while (iCounter < iSize)
+		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
+		if (injector)
+			injector.inject(bForce)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceInjectList(FormList injectionList) Global
+	bulkInjectList(injectionList, true)
+EndFunction
+
+Function bulkRevert(InjectTec:Injector[] injections, Bool bForce = false) Global
+	if (!injections || !injections.Length)
+		return
+	endif
+	
+	Int iCounter = 0
+	InjectTec:Injector injector = None
+	while (iCounter < injections.Length)
+		injector = injections[iCounter] as InjectTec:Injector
+		if (injector)
+			injector.revert(bForce)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceRevert(InjectTec:Injector[] injections) Global
+	bulkRevert(injections, true)
+EndFunction
+
+Function bulkRevertList(FormList injectionList, Bool bForce = false) Global
+	if (!injectionList)
+		return
+	endif
+	
+	Int iSize = injectionList.GetSize()
+	if (!iSize)
+		return
+	endif
+	
+	InjectTec:Injector injector = None
+	Int iCounter = 0
+	while (iCounter < iSize)
+		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
+		if (injector)
+			injector.revert(bForce)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceRevertList(FormList injectionList) Global
+	bulkRevertList(injectionList, true)
+EndFunction
+
+Function bulkVerify(InjectTec:Injector[] injections, Bool bForceInjectOnFailure = false) Global
+	if (!injections || !injections.Length)
+		return
+	endif
+	
+	Int iCounter = 0
+	InjectTec:Injector injector = None
+	while (iCounter < injections.Length)
+		injector = injections[iCounter] as InjectTec:Injector
+		if (injector)
+			injector.verify(bForceInjectOnFailure)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceVerify(InjectTec:Injector[] injections) Global
+	bulkVerify(injections, true)
+EndFunction
+
+Function bulkVerifyList(FormList injectionList, Bool bForceInjectOnFailure = false) Global
+	if (!injectionList)
+		return
+	endif
+	
+	Int iSize = injectionList.GetSize()
+	if (!iSize)
+		return
+	endif
+	
+	InjectTec:Injector injector = None
+	Int iCounter = 0
+	while (iCounter < iSize)
+		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
+		if (injector)
+			injector.verify(bForceInjectOnFailure)
+		endif
+		
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function bulkForceVerifyList(FormList injectionList) Global
+	bulkVerifyList(injectionList, true)
+EndFunction

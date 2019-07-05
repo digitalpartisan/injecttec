@@ -1,5 +1,8 @@
 v1.7.0
 Switched to Jiffy to simplify library dependencies
+Expanded use of DigitSet hexideciaml values throughout the library for maximum usability
+Refactored abstract logic scripts and removed repeated, redundant, and unmaintained code in order to cut down on the number of script files in the library, rarely-used injectors have been removed
+Removed redundant boolean properties from various scripts to reduce code complexity, mod authors should (but are not required to) update the property values on their InjectTec:Injector objects
 
 v1.6.0
 Integrated Loggout v1.1.0

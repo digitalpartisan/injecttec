@@ -1,4 +1,4 @@
-Scriptname InjectTec:HexidecimalLogic Const
+Scriptname InjectTec:Utility:HexidecimalLogic Hidden Const
 
 Struct DigitSet
 	String sFive = "0"
@@ -136,17 +136,19 @@ Int Function getDigitSetValue(DigitSet digits) Global
 	endif
 	iResult += iZero
 	
-	InjectTec:Logger:HexidecimalLogic.logDigitSetCompuation(digits, iFive, iFour, iThree, iTwo, iOne, iZero, iResult)
+	InjectTec:Logger:HexidecimalLogic.logDigitSetCompuation(digits, iResult)
 	
 	return iResult
 EndFunction
 
-Int[] Function getDigitSetValues(DigitSet[] digitSets) Global
+Int[] Function getDigitSetValues(DigitSet[] aDigitSets) Global
 	Int[] iaResults = new Int[0]
 	Int iCounter = 0
-	while (iCounter < digitSets.Length)
-		iaResults.Add(getDigitSetValue(digitSets[iCounter]))
+	while (iCounter < aDigitSets.Length)
+		iaResults.Add(getDigitSetValue(aDigitSets[iCounter]))
 		iCounter += 1
 	endWhile
+	
 	return iaResults
 EndFunction
+

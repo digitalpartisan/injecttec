@@ -1,43 +1,49 @@
-Scriptname InjectTec:Injector:Leveled:Granular extends InjectTec:Injector:Leveled:GranularAbstract Conditional
+Scriptname InjectTec:Injector:Leveled:Granular extends InjectTec:Injector:Leveled Conditional
 {Attach this script in the editor to inject append the Form records from a FormList source record to a targetted LeveledItem record with granular control over which levels and quantities are used for each Form record added.
 See notes on InjectTec:Core:Leveled.addFormListGranular() for specifics.}
 
-Import InjectTec:HexidecimalLogic
+Import InjectTec:Utility:LeveledItem
+Import InjectTec:Utility:HexidecimalLogic
 
 Group SourceSettings
-	Bool Property isSourceLocal = true Auto Const
-	{True if the value of sourceFormList can be set using the editor because the sourced FormList record comes from either a master file on which your plugin depends or your plugin itself.  Set to false otherwise.}
-	FormList Property sourceFormList = None Auto Const
-	{The FormList record to source for injection.  Set this value if the value of isSourceLocal is true.}
-	InjectTec:Plugin Property sourcePlugin = None Auto Const
-	{The plugin containing the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
-	Int Property sourceID = 0 Auto Const
-	{The record ID of the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
-	DigitSet Property sourceDigits = None Auto Const
-	{Alternative to the SourceID property.  To bypass converting base 16 to base 10, enter the hexidecimal digits here.}
+	InjectTec:Plugin Property SourcePlugin = None Auto Const
+	InjectTec:Injector:Leveled:Granular:FormSetting[] Property FormSettings = None Auto Const
 EndGroup
 
-FormList flAdditions = None
+GranularFormData[] sourceData = None
 
-FormList Function getSource()
-	return flAdditions
+GranularFormData[] Function getSource()
+	return sourceData
 EndFunction
 
 Bool Function canLoadSource()
-	flAdditions = InjectTec:Loader:FormList.load(isSourceLocal, sourceFormList, sourcePlugin, sourceID, sourceDigits)
-	if (flAdditions)
-		return true
-	else
-		InjectTec:Logger:Injector.couldNotLoadSource(self)
+	if (!FormSettings || !FormSettings.Length)
 		return false
 	endif
+	
+	GranularFormData[] loadResults = new GranularFormData[0]
+	Int iCounter = 0
+	GranularFormData currentData = None
+	
+	while (iCounter < FormSettings.Length)
+		currentData = FormSettings[iCounter].getGranularFormData(SourcePlugin)
+		if (!currentData)
+			return false
+		endif
+		
+		loadResults.Add(currentData)
+		iCounter += 1
+	endWhile
+	
+	sourceData = loadResults
+	return true
 EndFunction
 
 Function clear()
-	flAdditions = None
+	sourceData = None
 	parent.clear()
 EndFunction
 
 Function injectBehavior()
-	InjectTec:Core:Leveled.addFormListGranular(getTarget(), getSource(), Levels, Quantities)
+	InjectTec:Utility:LeveledItem.addGranularFormDataArray(getTarget(), getSource())
 EndFunction

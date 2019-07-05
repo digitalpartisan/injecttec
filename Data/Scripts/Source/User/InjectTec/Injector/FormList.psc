@@ -1,11 +1,9 @@
 Scriptname InjectTec:Injector:FormList extends InjectTec:Injector Hidden Conditional
 {Implementation of injection into FormList records.  See child scripts for details.}
 
-Import InjectTec:HexidecimalLogic
+Import InjectTec:Utility:HexidecimalLogic
 
 Group TargetSettings
-	Bool Property isTargetLocal = true Auto Const
-	{True if the value of targetList can be set using the editor because the targetted FormList record comes from either a master file on which your plugin depends or your plugin itself.  Set to false otherwise.}
 	FormList Property targetList = None Auto Const
 	{The FormList record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
@@ -23,7 +21,7 @@ FormList Function getTarget()
 EndFunction
 
 Bool Function canLoadTarget()
-	flTarget = InjectTec:Loader:FormList.load(isTargetLocal, targetList, targetPlugin, targetID, targetDigits)
+	flTarget = InjectTec:Utility:FormList.load(targetList, targetPlugin, targetID, targetDigits)
 	if (flTarget)
 		return true
 	else

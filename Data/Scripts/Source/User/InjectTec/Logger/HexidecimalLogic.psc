@@ -18,6 +18,6 @@ Bool Function error(String sMessage) Global
 	return Loggout.error(InjectTec:Logger.getName(), sMessage, getTags())
 EndFunction
 
-Bool Function logDigitSetCompuation(InjectTec:HexidecimalLogic:DigitSet digits, Int iFive, Int iFour, Int iThree, Int iTwo, Int iOne, Int iZero, Int iResult) Global
-	return log(InjectTec:HexidecimalLogic.digitSetToString(digits) + " = " + iFive + " + " + iFour + " + " + iThree + " + " + iTwo + " + " + iOne + " + " + iZero + " = " + iResult)
+Bool Function logDigitSetCompuation(InjectTec:Utility:HexidecimalLogic:DigitSet digits, Int iResult) Global
+	return log(InjectTec:Utility:HexidecimalLogic.digitSetToString(digits) + " = " + iResult)
 EndFunction

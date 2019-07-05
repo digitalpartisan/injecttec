@@ -12,18 +12,10 @@ Group Metadata
 	{Consider using this property instead of Quantity if you are performing many injections which should all have the same quantity.  This way, the quantity can be easily changed by editing only the GlobalVariable record and not many InjectTec:Injector objects.}
 EndGroup
 
-Int Function getIntValue(GlobalVariable gvVariable, Int iInt)
-	if (gvVariable)
-		return gvVariable.GetValueInt()
-	else
-		return iInt
-	endif
-EndFunction
-
 Int Function getLevel()
-	return getIntValue(LevelVariable, Level)
+	return InjectTec:Injector:Leveled.coalesceIntValue(Level, LevelVariable)
 EndFunction
 
 Int Function getQuantity()
-	return getIntValue(QuantityVariable, Quantity)
+	return InjectTec:Injector:Leveled.coalesceIntValue(Quantity, QuantityVariable)
 EndFunction

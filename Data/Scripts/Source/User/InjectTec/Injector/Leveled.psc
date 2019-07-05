@@ -1,11 +1,9 @@
 Scriptname InjectTec:Injector:Leveled extends InjectTec:Injector Hidden Conditional
 {Implementation of injection into LeveledItem records.}
 
-Import InjectTec:HexidecimalLogic
+Import InjectTec:Utility:HexidecimalLogic
 
 Group TargetSettings
-	Bool Property isTargetLocal = true Auto Const
-	{True if the value of targetLeveled can be set using the editor because the targetted LeveledItem record comes from either a master file on which your plugin depends or your plugin itself.  Set to false otherwise.}
 	LeveledItem Property targetLeveled = None Auto Const
 	{The LeveledItem record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
@@ -22,8 +20,16 @@ LeveledItem Function getTarget()
 	return liTarget
 EndFunction
 
+Int Function coalesceIntValue(Int iStatic = 0, GlobalVariable variable = None) Global
+	if (variable)
+		return variable.GetValueInt()
+	endif
+	
+	return iStatic
+EndFunction
+
 Bool Function canLoadTarget()
-	liTarget = InjectTec:Loader:Leveled.load(isTargetLocal, targetLeveled, targetPlugin, targetID, targetDigits)
+	liTarget = InjectTec:Utility:LeveledItem.load(targetLeveled, targetPlugin, targetID, targetDigits)
 	if (liTarget)
 		return true
 	else
@@ -38,7 +44,7 @@ Function clear()
 EndFunction
 
 Function revertBehavior()
-	InjectTec:Core:Leveled.revert(getTarget())
+	InjectTec:Utility:LeveledItem.revert(getTarget())
 EndFunction
 
 Function revert(Bool bForce = false)

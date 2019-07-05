@@ -4,10 +4,10 @@ Scriptname InjectTec:Plugin:Singleton extends InjectTec:Plugin
 InjectTec:Plugin:File Property myFile Auto Const Mandatory
 {Associates InjectTec plugin functionality with a particular plugin file.}
 
-String Function getFilename()
-	if (None == myFile) ; prevent noisy debug logs over trivially-avoided warnings
+String Function getFilenameHelper()
+	if (!myFile) ; prevent noisy debug logs over trivially-avoided warnings
 		return ""
 	endif
 	
-	return myFile.Filename
+	return myFile.getFilename()
 EndFunction

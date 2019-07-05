@@ -1,7 +1,7 @@
 Scriptname InjectTec:Injector:FormList:RemoteForms extends InjectTec:Injector:FormList Conditional
 {Attach this script in the editor to inject append multiple remote Forms to a targetted FormList record.}
 
-Import InjectTec:HexidecimalLogic
+Import InjectTec:Utility:HexidecimalLogic
 
 Group SourceSettings
 	InjectTec:Plugin Property SourcePlugin = None Auto Const Mandatory
@@ -19,19 +19,17 @@ Form[] Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-	faAdditions = None
-	if (SourceDigitSets)
-		faAdditions = SourcePlugin.lookupFormsFromDigitSets(SourceDigitSets)
-	elseif (SourceIDs)
-		faAdditions = SourcePlugin.lookupForms(SourceIDs)
+	if (!SourcePlugin)
+		return false
 	endif
 	
-	if (faAdditions)
-		return true
-	else
+	faAdditions = SourcePlugin.lookupArrayWithCoalescedIDs(SourceIDs, SourceDigitSets)
+	if (!faAdditions)
 		InjectTec:Logger:Injector.couldNotLoadSource(self)
 		return false
 	endif
+	
+	return true
 EndFunction
 
 Function clear()
@@ -40,13 +38,13 @@ Function clear()
 EndFunction
 
 Function injectBehavior()
-	InjectTec:Core:FormList.addForms(getTarget(), getSource())
+	InjectTec:Utility:FormList.addForms(getTarget(), getSource())
 EndFunction
 
 Function revertBehavior()
-	InjectTec:Core:FormList.removeForms(getTarget(), getSource())
+	InjectTec:Utility:FormList.removeForms(getTarget(), getSource())
 EndFunction
 
 Bool Function verificationBehavior()
-	return InjectTec:Core:FormList.verifyForms(getTarget(), getSource())
+	return InjectTec:Utility:FormList.verifyForms(getTarget(), getSource())
 EndFunction

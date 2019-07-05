@@ -3,3 +3,11 @@ Scriptname InjectTec:Plugin:File extends Quest
 
 String Property Filename = "" Auto Const Mandatory
 {The name of the plugin file from which forms are to be loaded.}
+
+String Function getFilename()
+	return Filename
+EndFunction
+
+Bool Function isInstalled()
+	return InjectTec:Plugin.isPluginInstalled(getFilename())
+EndFunction

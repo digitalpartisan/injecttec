@@ -1,11 +1,9 @@
 Scriptname InjectTec:Injector:NamingRules extends InjectTec:Injector Conditional
 {Implementation of injection into InstanceNamingRule records.}
 
-Import InjectTec:HexidecimalLogic
+Import InjectTec:Utility:HexidecimalLogic
 
 Group TargetSettings
-	Bool Property isTargetLocal = true Auto Const
-	{True if the value of targetRules can be set using the editor because the targetted InstanceNamingRules record comes from either a master file on which your plugin depends or your plugin itself.  Set to false otherwise.}
 	InstanceNamingRules Property targetRules = None Auto Const
 	{The InstanceNamingRules record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
@@ -17,8 +15,6 @@ Group TargetSettings
 EndGroup
 
 Group SourceSettings
-	Bool Property isSourceLocal = true Auto Const
-	{True if the value of sourceRules can be set using the editor because the sourced InstanceNamingRules record comes from either a master file on which your plugin depends or your plugin itself.  Set to false otherwise.}
 	InstanceNamingRules Property sourceRules = None Auto Const
 	{The InstanceNamingRules record to source for injection.  Set this value if the value of isSourceLocal is true.}
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
@@ -41,7 +37,7 @@ InstanceNamingRules Function getSource()
 EndFunction
 
 Bool Function canLoadTarget()
-	innrTarget = InjectTec:Loader:NamingRules.load(isTargetLocal, targetRules, targetPlugin, targetID, targetDigits)
+	innrTarget = InjectTec:Utility:InstanceNamingRules.load(targetRules, targetPlugin, targetID, targetDigits)
 	if (innrTarget)
 		return true
 	else
@@ -51,7 +47,7 @@ Bool Function canLoadTarget()
 EndFunction
 
 Bool Function canLoadSource()
-	innrAdditions = InjectTec:Loader:NamingRules.load(isSourceLocal, sourceRules, sourcePlugin, sourceID, sourceDigits)
+	innrAdditions = InjectTec:Utility:InstanceNamingRules.load(sourceRules, sourcePlugin, sourceID, sourceDigits)
 	if (innrAdditions)
 		return true
 	else
@@ -67,7 +63,7 @@ Function clear()
 EndFunction
 
 Function injectBehavior()
-	InjectTec:Core:NamingRules.append(getTarget(), getSource())
+	InjectTec:Utility:InstanceNamingRules.append(getTarget(), getSource())
 EndFunction
 
 Function revert(Bool bForce = false)

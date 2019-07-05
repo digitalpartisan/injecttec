@@ -10,6 +10,10 @@ String Function buildLookupReference(String sFilename, Int iFormID) Global
 	return "(" + sFilename + "," + iFormID + ")"
 EndFunction
 
+String Function buildDigitLookupReference(string sFilename, InjectTec:Utility:HexidecimalLogic:DigitSet digits) Global
+	return "(" + sFilename + "," + InjectTec:Utility:HexidecimalLogic.digitSetToString(digits) + ")"
+EndFunction
+
 Bool Function log(String sMessage) Global
 	;return Loggout.log(InjectTec:Logger.getName(), "target: " + fTarget + " adding: " + fAddition, getTags())
 	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
@@ -31,6 +35,10 @@ Bool Function lookupFailed(String sFilename, Int iFormID) Global
 	return error("lookup failed: " + buildLookupReference(sFilename, iFormID))
 EndFunction
 
+Bool Function digitLookupFailed(String sFilename, InjectTec:Utility:HexidecimalLogic:DigitSet digits) Global
+	return error("digit lookup failed: " + buildDigitLookupReference(sFilename, digits))
+EndFunction
+
 Bool Function couldNotCast(String sFilename, Int iFormID, String sType) Global
 	return error("could not cast lookup " + buildLookupReference(sFilename, iFormID) + " to " + sType)
 EndFunction
@@ -39,8 +47,12 @@ Bool Function behaviorUndefined(InjectTec:Plugin pluginObject, String sBehavior)
 	return warn(pluginObject + " " + sBehavior + " behavior is not defined")
 EndFunction
 
-Bool Function foundVersion(InjectTec:Plugin pluginObject, String sFilename) Global
-	return log(pluginObject + " found installed version " + sFilename)
+Bool Function noFilename(InjectTec:Plugin pluginObject) Global
+	return error("Plugin " + pluginObject + " has failed to define a filename")
+EndFunction
+
+Bool Function foundVersion(InjectTec:Plugin pluginObject, InjectTec:Plugin:File pluginFile) Global
+	return log(pluginObject + " found installed version " + pluginFile)
 EndFunction
 
 Bool Function noInstalledVersion(InjectTec:Plugin pluginObject) Global
