@@ -128,7 +128,7 @@ Event OnQuestShutdown()
 EndEvent
 
 InjectTec:Injector[] Function injectorFormListToArray(FormList theList) Global
-	return Jiffy:Utility.formListToArray(theList) as InjectTec:Injector[]
+	return Jiffy:Utility:FormList.toArray(theList) as InjectTec:Injector[]
 EndFunction
 
 Function bulkInject(InjectTec:Injector[] injections, Bool bForce = false) Global
