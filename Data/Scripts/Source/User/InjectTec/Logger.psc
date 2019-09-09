@@ -4,14 +4,14 @@ String Function getName() Global
 	return "InjectTec"
 EndFunction
 
-Bool Function log(String sMessage) Global
-	return Loggout.log(getName(), sMessage)
+Bool Function log(String sMessage, String[] tags = None) Global
+	return Jiffy:Loggout.log(getName(), sMessage, tags)
 EndFunction
 
-Bool Function warn(String sMessage) Global
-	return Loggout.warn(getName(), sMessage)
+Bool Function warn(String sMessage, String[] tags = None) Global
+	return Jiffy:Loggout.warn(getName(), sMessage, tags)
 EndFunction
 
-Bool Function error(String sMessage) Global
-	return Loggout.error(getName(), sMessage)
+Bool Function error(String sMessage, String[] tags = None) Global
+	return Jiffy:Loggout.error(getName(), sMessage, tags)
 EndFunction

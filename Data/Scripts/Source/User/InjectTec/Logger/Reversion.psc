@@ -7,15 +7,15 @@ String[] Function getTags() Global
 EndFunction
 
 Bool Function log(String sMessage) Global
-	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.log(sMessage, getTags())
 EndFunction
 
 Bool Function warn(String sMessage) Global
-	return Loggout.warn(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.warn(sMessage, getTags())
 EndFunction
 
 Bool Function error(String sMessage) Global
-	return Loggout.error(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.error(sMessage, getTags())
 EndFunction
 
 Bool Function reverting(Form fTarget, Form fRemoving) Global

@@ -7,15 +7,15 @@ String[] Function getTags() Global
 EndFunction
 
 Bool Function log(String sMessage) Global
-	return Loggout.log(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.log(sMessage, getTags())
 EndFunction
 
 Bool Function warn(String sMessage) Global
-	return Loggout.warn(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.warn(sMessage, getTags())
 EndFunction
 
 Bool Function error(String sMessage) Global
-	return Loggout.error(InjectTec:Logger.getName(), sMessage, getTags())
+	return InjectTec:Logger.error(sMessage, getTags())
 EndFunction
 
 Bool Function behaviorUndefined(InjectTec:Injector injectorObject, String sBehavior) Global
@@ -31,9 +31,9 @@ Bool Function couldNotLoadSource(InjectTec:Injector injectorRef) Global
 EndFunction
 
 Bool Function injecting(InjectTec:Injector injectorObject, Bool bForce) Global
-	return log(Loggout.buildMessage(injectorObject + " injecting", bForce, "", " (forced)"))
+	return log(Jiffy:Loggout.buildMessage(injectorObject + " injecting", bForce, "", " (forced)"))
 EndFunction
 
 Bool Function reverting(InjectTec:Injector injectorObject, Bool bForce) Global
-	return log(Loggout.buildMessage(injectorObject + " reverting", bForce, "", " (forced)"))
+	return log(Jiffy:Loggout.buildMessage(injectorObject + " reverting", bForce, "", " (forced)"))
 EndFunction

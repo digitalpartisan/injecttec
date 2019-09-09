@@ -26,6 +26,27 @@ Bool Function isInstalled()
 	return isPluginInstalled(getFilename())
 EndFunction
 
+Bool Function isInstalledBulk(InjectTec:Plugin[] plugins) Global
+	if (!plugins || !plugins.Length)
+		return true ; because none of them are not installed, technically
+	endif
+	
+	Int iCounter = 0
+	while (iCounter < plugins.Length)
+		if (!plugins[iCounter])
+			return false ; because something is very broken
+		endif
+		
+		if (!plugins[iCounter].isInstalled())
+			return false
+		endif
+		
+		iCounter += 1
+	endWhile
+	
+	return true ; every plugin is installed
+EndFunction
+
 Form Function fetch(String sPluginName, Int iFormID) Global
 {Trivial, except for the logging.  This is the sort of thing that you have to diagnose post-runtime to find out if the plugin name / ID was correct.}
 	if (!isPluginInstalled(sPluginName))
