@@ -31,9 +31,9 @@ Bool Function couldNotLoadSource(InjectTec:Injector injectorRef) Global
 EndFunction
 
 Bool Function injecting(InjectTec:Injector injectorObject, Bool bForce) Global
-	return log(Jiffy:Loggout.buildMessage(injectorObject + " injecting", bForce, "", " (forced)"))
+	return log(Jiffy:Loggout.buildMessage(injectorObject + " injecting", bForce, " (forced)", ""))
 EndFunction
 
 Bool Function reverting(InjectTec:Injector injectorObject, Bool bForce) Global
-	return log(Jiffy:Loggout.buildMessage(injectorObject + " reverting", bForce, "", " (forced)"))
+	return log(Jiffy:Loggout.buildMessage(injectorObject + " reverting", bForce, " (forced)", ""))
 EndFunction
