@@ -1,7 +1,7 @@
 Scriptname InjectTec:Plugin:ChronicleBehavior:Search extends Chronicle:Package:CustomBehavior:BehaviorSearch
 
 Bool Function meetsCriteria(Chronicle:Package:CustomBehavior behavior)
-	return behavior is InjectTec:Plugin:ChronicleBehavior
+	return (behavior as InjectTec:Plugin:ChronicleBehavior)
 EndFunction
 
 InjectTec:Plugin:ChronicleBehavior[] Function searchPluginRequirements(Chronicle:Package targetPackage)
