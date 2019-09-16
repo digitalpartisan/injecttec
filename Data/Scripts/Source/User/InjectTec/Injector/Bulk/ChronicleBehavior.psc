@@ -2,6 +2,10 @@ Scriptname InjectTec:Injector:Bulk:ChronicleBehavior extends Chronicle:Package:C
 
 InjectTec:Injector:Bulk Property BulkInjections Auto Const Mandatory
 
+InjectTec:Injector:Bulk Function getInjections()
+	return BulkInjections
+EndFunction
+
 Function inject(Bool bForce = false)
 	BulkInjections.inject(bForce)
 EndFunction
