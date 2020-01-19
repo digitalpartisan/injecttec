@@ -104,10 +104,7 @@ Bool Function verify(Bool bForceInjectOnFailure = false)
 	endif
 	
 	Bool bResult = verificationBehavior()
-	if (!bResult && bForceInjectOnFailure)
-		forceInject()
-	endif
-	
+	!bResult && bForceInjectOnFailure && forceInject()
 	clear() ; this logic required loading forms, so they're going to need to be purged again
 	
 	return bResult
@@ -141,10 +138,7 @@ Function bulkInjectList(FormList injectionList, Bool bForce = false) Global
 	Int iCounter = 0
 	while (iCounter < iSize)
 		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
-		if (injector)
-			injector.inject(bForce)
-		endif
-		
+		injector && injector.inject(bForce)
 		iCounter += 1
 	endWhile
 EndFunction
@@ -167,10 +161,7 @@ Function bulkRevertList(FormList injectionList, Bool bForce = false) Global
 	Int iCounter = 0
 	while (iCounter < iSize)
 		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
-		if (injector)
-			injector.revert(bForce)
-		endif
-		
+		injector && injector.revert(bForce)
 		iCounter += 1
 	endWhile
 EndFunction
@@ -193,14 +184,43 @@ Function bulkVerifyList(FormList injectionList, Bool bForceInjectOnFailure = fal
 	Int iCounter = 0
 	while (iCounter < iSize)
 		injector = injectionList.GetAt(iCounter) as InjectTec:Injector
-		if (injector)
-			injector.verify(bForceInjectOnFailure)
-		endif
-		
+		injector && injector.verify(bForceInjectOnFailure)
 		iCounter += 1
 	endWhile
 EndFunction
 
 Function bulkForceVerifyList(FormList injectionList) Global
 	bulkVerifyList(injectionList, true)
+EndFunction
+
+Bool Function shouldUnrun()
+    return getHasRun() && !canRevert()
+EndFunction
+
+Function unrunBehavior()
+    clear()
+    setHasRun(false)
+EndFunction
+
+Function unrun()
+    shouldUnrun() && unrunBehavior()
+EndFunction
+
+Function bulkUnrunList(FormList injectionList) Global
+    if (!injectionList)
+        return
+    endif
+
+    Int iSize = injectionList.GetSize()
+    if (!iSize)
+        return
+    endif
+
+    InjectTec:Injector injector = None
+    Int iCounter = 0
+    while (iCounter < iSize)
+        injector = injectionList.GetAt(iCounter) as InjectTec:Injector
+        injector && injector.unrun()
+        iCounter += 1
+    endWhile
 EndFunction

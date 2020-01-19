@@ -38,3 +38,11 @@ EndFunction
 Bool Function canVerify()
 	return true
 EndFunction
+
+Function unrunBehavior()
+    if (canLoadTarget())
+        Jiffy:Utility:FormList.clean(getTarget())
+    endif
+
+    parent.unrunBehavior()
+EndFunction

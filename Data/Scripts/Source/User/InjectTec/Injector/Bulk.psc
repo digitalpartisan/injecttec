@@ -13,9 +13,7 @@ EndFunction
 
 Function inject(Bool bForce = false)
 {Performs all injections in the Injectors FormList property based on whether or not all required plugins are available.}
-	if (checkPlugins())
-		InjectTec:Injector.bulkInjectList(Injectors, bForce)
-	endif
+	checkPlugins() && InjectTec:Injector.bulkInjectList(Injectors, bForce)
 EndFunction
 
 Function forceInject()
@@ -25,9 +23,7 @@ EndFunction
 Function revert(Bool bForce = false)
 {Performs all reversions in the Injectors FormList property based on whether or not all required plugins are available.
 Please see the cautionary remark on InjectTec:Injector.revert() before doing this and consider the potential consequences.}
-	if (checkPlugins())
-		InjectTec:Injector.bulkRevertList(Injectors, bForce)
-	endif
+	checkPlugins() && InjectTec:Injector.bulkRevertList(Injectors, bForce)
 EndFunction
 
 Function forceRevert()
@@ -35,21 +31,13 @@ Function forceRevert()
 EndFunction
 
 Function verify(Bool bForceInjectOnFailure = false)
-	if (checkPlugins())
-		InjectTec:Injector.bulkVerifyList(Injectors, bForceInjectOnFailure)
-	endif
+	checkPlugins() && InjectTec:Injector.bulkVerifyList(Injectors, bForceInjectOnFailure)
 EndFunction
 
 Function forceVerify()
 	verify(true)
 EndFunction
 
-Event OnQuestInit()
-{Useful for initiating injections right off the bat if they're not part of a larger logical package and/or if they're part of a mod that has an install / uninstall quest.}
-	inject()
-EndEvent
-
-Event OnQuestShutdown()
-{Useful for reverting the injections if they're not part of a larger logical package and/or if they're part of a mod that has an install / uninstall quest.}
-	revert()
-EndEvent
+Function unrun()
+    InjectTec:Injector.bulkUnrunList(Injectors)
+EndFunction
