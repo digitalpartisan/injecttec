@@ -69,6 +69,14 @@ Function shutdown(ObjectReference akTerminalRef)
     endif
 EndFunction
 
+Function rerun(ObjectReference akTerminalRef)
+    if (isValid() && hasRun())
+        getIntegrator().rerun()
+        updateState()
+        draw(akTerminalRef)
+    endif
+EndFunction
+
 Function tokenReplacementLogic()
 	if (isValid())
 	    InjectTec:Integrator integrator = getIntegrator()

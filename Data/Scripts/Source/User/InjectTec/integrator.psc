@@ -71,6 +71,10 @@ Function forceInjections()
 
 EndFunction
 
+Function rerun()
+
+EndFunction
+
 Auto State Waiting
 	Event OnBeginState(String asOldState)
 	    InjectTec:Logger:Integrator.logWaiting(self)
@@ -129,6 +133,11 @@ State Started
 
 	Function forceInjections()
 	    Injections && Injections.forceInject()
+	EndFunction
+
+	Function rerun()
+	    Stop()
+	    Start()
 	EndFunction
 EndState
 
