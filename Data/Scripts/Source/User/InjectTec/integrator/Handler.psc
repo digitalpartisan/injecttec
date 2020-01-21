@@ -46,13 +46,6 @@ Function updateState()
     bCanRun = integrator.canRun()
 EndFunction
 
-Function forceInjections(ObjectReference akTerminalRef)
-    if (isValid() && hasRun())
-        getIntegrator().forceInjections()
-        draw(akTerminalRef)
-    endif
-EndFunction
-
 Function startup(ObjectReference akTerminalRef)
     if (isValid() && canRun())
         getIntegrator().Start()
