@@ -2,7 +2,7 @@ Scriptname InjectTec:Integrator extends Quest Conditional
 
 Group MinimalRequirements
     InjectTec:Plugin[] Property Plugins Auto Const Mandatory
-    Message Property About = None Auto Const
+    Message Property About Auto Const
     Bool Property AutoFire = false Auto Const
 EndGroup
 
