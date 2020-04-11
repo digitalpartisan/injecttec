@@ -16,11 +16,15 @@ String sStateStarted = "Started" Const
 Bool bHasRun = false Conditional ; for legacy reasons to support old functionality across plugins that may need this script (but also useful for conditional system)
 
 Bool Function hasRun()
-    return bHasRun
+    return false
 EndFunction
 
 Bool Function canRun()
     return false
+EndFunction
+
+InjectTec:Plugin[] Function getPlugins()
+	return Plugins
 EndFunction
 
 Bool Function isPluginRequirementMet()
@@ -139,6 +143,10 @@ State Started
 	    Stop()
 	    Start()
 	EndFunction
+	
+	Bool Function hasRun()
+		return true
+	EndFunction
 EndState
 
 Function stopBehavior()
@@ -148,6 +156,7 @@ EndFunction
 State Stopped
     Event OnBeginState(String asOldState)
         InjectTec:Logger:Integrator.logStopped(self)
+		bHasRun = false
         stopBehavior()
         goToWaiting()
     EndEvent
@@ -160,6 +169,7 @@ EndFunction
 State Unrun
     Event OnBeginState(String asOldState)
         InjectTec:Logger:Integrator.logUnrun(self)
+		bHasRun = false
         unrunBehavior()
         goToWaiting()
     EndEvent
@@ -177,6 +187,10 @@ Function stateCheckBulk(InjectTec:Integrator[] integrators) Global
 	endWhile
 EndFunction
 
+Function stateCheckList(FormList integrators) Global
+	stateCheckBulk(Jiffy:Utility:FormList.toArray(integrators) as InjectTec:Integrator[])
+EndFunction
+
 Function stopBulk(InjectTec:Integrator[] integrators, Bool bCheck = true) Global
 	if (!integrators || !integrators.Length)
 		return
@@ -187,4 +201,8 @@ Function stopBulk(InjectTec:Integrator[] integrators, Bool bCheck = true) Global
 		integrators[iCounter] && integrators[iCounter].Stop()
 		iCounter += 1
 	endWhile
+EndFunction
+
+Function stopList(FormList integrators) Global
+	stopBulk(Jiffy:Utility:FormList.toArray(integrators) as InjectTec:Integrator[])
 EndFunction

@@ -1,22 +1,22 @@
 Scriptname InjectTec:Integrator:ChronicleBehavior extends Chronicle:Package:CustomBehavior
 
-InjectTec:Integrator[] Property Integrators Auto Const Mandatory
+FormList Property Integrators Auto Const Mandatory
 
-InjectTec:Integrator[] Function getIntegrators()
+FormList Function getIntegrators()
     return Integrators
 EndFunction
 
 Bool Function installBehavior()
-	InjectTec:Integrator.stateCheckBulk(getIntegrators())
+	InjectTec:Integrator.stateCheckList(getIntegrators())
 	return true
 EndFunction
 
 Bool Function postloadBehavior()
-	InjectTec:Integrator.stateCheckBulk(getIntegrators())
+	InjectTec:Integrator.stateCheckList(getIntegrators())
 	return true
 EndFunction
 
 Bool Function uninstallBehavior()
-	InjectTec:Integrator.stopBulk(getIntegrators())
+	InjectTec:Integrator.stopList(getIntegrators())
 	return true
 EndFunction

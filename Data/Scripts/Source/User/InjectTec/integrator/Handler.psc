@@ -35,6 +35,7 @@ EndFunction
 Function updateState()
     bPluginRequirementMet = false
     bHasRun = false
+	bCanRun = false
 
     if (!isValid())
         return
