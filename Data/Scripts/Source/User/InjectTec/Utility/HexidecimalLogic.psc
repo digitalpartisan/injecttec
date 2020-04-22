@@ -85,6 +85,10 @@ Bool Function isDigitValid(String sDigit) Global
 EndFunction
 
 String Function digitSetToString(DigitSet digits) Global
+	if (!digits)
+		return "N/A - no digits provided"
+	endif
+	
 	return digits.sFive + digits.sFour + digits.sThree + digits.sTwo + digits.sOne + digits.sZero
 EndFunction
 
@@ -98,6 +102,10 @@ Int Function getDigitValue(String sChar, Int iPower = 0) Global
 EndFunction
 
 Int Function getDigitSetValue(DigitSet digits) Global
+	if (!digits)
+		return 0
+	endif
+
 	Int iResult = 0
 	
 	Int iFive = getDigitValue(digits.sFive, 5)
