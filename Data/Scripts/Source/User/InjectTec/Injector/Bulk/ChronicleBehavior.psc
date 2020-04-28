@@ -26,6 +26,10 @@ Function verify(Bool bForceInjectOnFailure = false)
 	BulkInjections.verify(bForceInjectOnFailure)
 EndFunction
 
+Function unrun()
+	BulkInjections.unrun()
+EndFunction
+
 Function forceVerify()
 	verify(true)
 EndFunction
@@ -37,6 +41,7 @@ EndFunction
 
 Bool Function postloadBehavior()
 	inject()
+	unrun()
 	return true
 EndFunction
 
