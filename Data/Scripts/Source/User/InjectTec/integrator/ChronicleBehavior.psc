@@ -13,6 +13,7 @@ EndFunction
 
 Bool Function postloadBehavior()
 	InjectTec:Integrator.stateCheckList(getIntegrators())
+	InjectTec:Integrator.gameLoadList(getIntegrators())
 	return true
 EndFunction
 

@@ -108,6 +108,14 @@ Function startBehavior()
     Injections && Injections.inject()
 EndFunction
 
+Function gameLoadBehavior()
+
+EndFunction
+
+Function gameLoad()
+
+EndFunction
+
 State Started
 	Event OnBeginState(String asOldState)
 	    InjectTec:Logger:Integrator.logStarted(self)
@@ -146,6 +154,10 @@ State Started
 	
 	Bool Function hasRun()
 		return true
+	EndFunction
+	
+	Function gameLoad()
+		gameLoadBehavior()
 	EndFunction
 EndState
 
@@ -189,6 +201,22 @@ EndFunction
 
 Function stateCheckList(FormList integrators) Global
 	stateCheckBulk(Jiffy:Utility:FormList.toArray(integrators) as InjectTec:Integrator[])
+EndFunction
+
+Function gameLoadBulk(InjectTec:Integrator[] integrators) Global
+	if (!integrators || !integrators.Length)
+		return
+	endif
+	
+	Int iCounter = 0
+	while (iCounter < integrators.Length)
+		integrators[iCounter] && integrators[iCounter].gameLoad()
+		iCounter += 1
+	endWhile
+EndFunction
+
+Function gameLoadList(FormList integrators) Global
+	gameLoadBulk(Jiffy:Utility:FormList.toArray(integrators) as InjectTec:Integrator[])
 EndFunction
 
 Function stopBulk(InjectTec:Integrator[] integrators, Bool bCheck = true) Global
