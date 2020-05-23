@@ -8,8 +8,6 @@ Group SourceSettings
 	{The Form record to source for injection.  Set this value if the value of isSourceLocal is true.}
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced Form.  Set this value if the value of isSourceLocal has been set to false.}
-	Int Property sourceID = 0 Auto Const
-	{The record ID of the sourced Form.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property sourceDigits = None Auto Const
 	{Alternative to sourceID.  If you would rather skip the base 16 to base 10 conversion, enter the hexidecimal digits here.}
 EndGroup
@@ -21,11 +19,11 @@ Form Function getSource()
 EndFunction
 
 Bool Function canLoadSource()
-	fAddition = InjectTec:Utility:Form.load(sourceForm, sourcePlugin, sourceID, sourceDigits)
+	fAddition = InjectTec:Utility:Form.load(sourceForm, sourcePlugin, sourceDigits)
 	if (fAddition)
 		return true
 	else
-		InjectTec:Logger:Injector.couldNotLoadSource(self)
+		InjectTec:Injector:Logger.couldNotLoadSource(self)
 		return false
 	endif
 EndFunction

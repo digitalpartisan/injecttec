@@ -8,8 +8,6 @@ Group TargetSettings
 	{The FormList record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
 	{The plugin containing the targetted FormList.  Set this value if the value of isTargetLocal has been set to false.}
-	Int Property targetID = 0 Auto Const
-	{The record ID of the targetted FormList.  Set this value if the value of isTargetLocal has been set to false.}
 	DigitSet Property targetDigits = None Auto Const
 	{Alternative to setting the targetID property.}
 EndGroup
@@ -21,11 +19,11 @@ FormList Function getTarget()
 EndFunction
 
 Bool Function canLoadTarget()
-	flTarget = InjectTec:Utility:FormList.load(targetList, targetPlugin, targetID, targetDigits)
+	flTarget = InjectTec:Utility:FormList.load(targetList, targetPlugin, targetDigits)
 	if (flTarget)
 		return true
 	else
-		InjectTec:Logger:Injector.couldNotLoadTarget(self)
+		InjectTec:Injector:Logger.couldNotLoadTarget(self)
 		return false
 	endif
 EndFunction

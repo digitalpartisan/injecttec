@@ -144,7 +144,7 @@ Int Function getDigitSetValue(DigitSet digits) Global
 	endif
 	iResult += iZero
 	
-	;InjectTec:Logger:HexidecimalLogic.logDigitSetCompuation(digits, iResult)
+	InjectTec:Utility:HexidecimalLogic:Logger.logDigitSetCompuation(digits, iResult)
 	
 	return iResult
 EndFunction

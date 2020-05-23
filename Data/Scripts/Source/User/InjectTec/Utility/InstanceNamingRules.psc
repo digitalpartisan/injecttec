@@ -5,12 +5,12 @@ Import InjectTec:Utility:HexidecimalLogic
 
 Function append(InstanceNamingRules innrTarget, InstanceNamingRules innrAdditions) Global
 {Trivial, except for logging.  Useful for debugging.}
-	InjectTec:Logger:Injection.logInjection(innrTarget, innrAdditions)
+	InjectTec:Utility:Logger.logInjection(innrTarget, innrAdditions)
 	innrTarget.mergeWith(innrAdditions)
 EndFunction
 
-InstanceNamingRules Function load(InstanceNamingRules record = None, InjectTec:Plugin plugin = None, Int iID = 0, DigitSet digits = None) Global
-	return InjectTec:Utility:Loader.loadHelper(record, plugin, iID, digits) as InstanceNamingRules
+InstanceNamingRules Function load(InstanceNamingRules record = None, InjectTec:Plugin plugin = None, DigitSet digits = None) Global
+	return InjectTec:Utility:Loader.loadHelper(record, plugin, digits) as InstanceNamingRules
 EndFunction
 
 InstanceNamingRules Function get()

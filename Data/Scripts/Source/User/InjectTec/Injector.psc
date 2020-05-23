@@ -13,19 +13,19 @@ EndFunction
 
 Bool Function canLoadTarget()
 {Override this method to specify what the target record is and how it is accessed.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "canLoadTarget()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "canLoadTarget()")
 	return false
 EndFunction
 
 Bool Function canLoadSource()
 {Overrride this method to specify what the source (that is, the source of the new data) is and how it is accessed.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "canLoadSource()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "canLoadSource()")
 	return false
 EndFunction
 
 Function clear()
 {Precaution against junk data staying around in the variables of child scripts.  See child scripts for details.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "clear()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "clear()")
 EndFunction
 
 Bool Function canLoadRecords()
@@ -39,7 +39,7 @@ EndFunction
 
 Function injectBehavior()
 {Override this behavior in child scripts to implement specific injection logic on particular data types.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "injectBehavior()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "injectBehavior()")
 EndFunction
 
 Bool Function canInject(Bool bForce = false)
@@ -49,7 +49,7 @@ EndFunction
 Function inject(Bool bForce = false)
 {Call this method to cause the injection behavior to occur.}
 	if (canInject(bForce))
-		InjectTec:Logger:Injector.injecting(self, bForce)
+		InjectTec:Injector:Logger.injecting(self, bForce)
 		injectBehavior()
 		setHasRun(true)
 	endif
@@ -63,7 +63,7 @@ EndFunction
 
 Function revertBehavior()
 {Override this behavior to revert the injection as needed.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "revertBehavior()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "revertBehavior()")
 EndFunction
 
 Bool Function canRevert(Bool bForce = false)
@@ -74,7 +74,7 @@ Function revert(Bool bForce = false)
 {Call this method to cause the injection behavior to be reversed.
 Warning: reverting script changes could wipe out all injections, not just yours.  Use as a last resort and investigate other options in and out of this library first.}
 	if (canRevert(bForce))
-		InjectTec:Logger:Injector.reverting(self, bForce)
+		InjectTec:Injector:Logger.reverting(self, bForce)
 		revertBehavior()
 		setHasRun(false)
 	endif
@@ -93,7 +93,7 @@ EndFunction
 
 Bool Function verificationBehavior()
 {Override to indicate how an injection object should verify (if at all) whether or not it has taken effect.  This function is not expected to be called (or even overridden if verification is not possible.}
-	InjectTec:Logger:Injector.behaviorUndefined(self, "verificationBehavior()")
+	InjectTec:Injector:Logger.behaviorUndefined(self, "verificationBehavior()")
 	return false
 EndFunction
 

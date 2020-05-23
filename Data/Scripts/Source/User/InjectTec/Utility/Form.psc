@@ -3,8 +3,8 @@ Scriptname InjectTec:Utility:Form extends InjectTec:Utility:Loader
 
 Import InjectTec:Utility:HexidecimalLogic
 
-Form Function load(Form record = None, InjectTec:Plugin plugin = None, Int iID = 0, DigitSet digits = None) Global
-	return InjectTec:Utility:Loader.loadHelper(record, plugin, iID, digits) ; called this way because of compiler syntax oddities
+Form Function load(Form record = None, InjectTec:Plugin plugin = None, DigitSet digits = None) Global
+	return InjectTec:Utility:Loader.loadHelper(record, plugin, digits) ; called this way because of compiler syntax oddities
 EndFunction
 
 Form Function getForm()

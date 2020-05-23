@@ -8,8 +8,6 @@ Group TargetSettings
 	{The InstanceNamingRules record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
 	{The plugin containing the targetted InstanceNamingRules.  Set this value if the value of isTargetLocal has been set to false.}
-	Int Property targetID = 0 Auto Const
-	{The record ID of the targetted InstanceNamingRules.  Set this value if the value of isTargetLocal has been set to false.}
 	DigitSet Property targetDigits = None Auto Const
 	{Alternative to the targetID property.  Set this to bypass the need to convert the hexidecimal digits to an integer.}
 EndGroup
@@ -19,8 +17,6 @@ Group SourceSettings
 	{The InstanceNamingRules record to source for injection.  Set this value if the value of isSourceLocal is true.}
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced InstanceNamingRules.  Set this value if the value of isSourceLocal has been set to false.}
-	Int Property sourceID = 0 Auto Const
-	{The record ID of the sourced InstanceNamingRules.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property sourceDigits = None Auto Const
 	{Alternative to the sourceID property.  Set this to bypass the need to convert the hexidecimal digits to an integer.}
 EndGroup
@@ -37,21 +33,21 @@ InstanceNamingRules Function getSource()
 EndFunction
 
 Bool Function canLoadTarget()
-	innrTarget = InjectTec:Utility:InstanceNamingRules.load(targetRules, targetPlugin, targetID, targetDigits)
+	innrTarget = InjectTec:Utility:InstanceNamingRules.load(targetRules, targetPlugin, targetDigits)
 	if (innrTarget)
 		return true
 	else
-		InjectTec:Logger:Injector.couldNotLoadTarget(self)
+		InjectTec:Injector:Logger.couldNotLoadTarget(self)
 		return false
 	endif
 EndFunction
 
 Bool Function canLoadSource()
-	innrAdditions = InjectTec:Utility:InstanceNamingRules.load(sourceRules, sourcePlugin, sourceID, sourceDigits)
+	innrAdditions = InjectTec:Utility:InstanceNamingRules.load(sourceRules, sourcePlugin, sourceDigits)
 	if (innrAdditions)
 		return true
 	else
-		InjectTec:Logger:Injector.couldNotLoadSource(self)
+		InjectTec:Injector:Logger.couldNotLoadSource(self)
 		return false
 	endif
 EndFunction

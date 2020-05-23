@@ -13,13 +13,13 @@ String Function getFilenameHelper()
 	While (iCounter < Files.Length)
 		currentVersion = Files[iCounter]
 		if (currentVersion.isInstalled())
-			InjectTec:Logger:Plugin.foundVersion(self, currentVersion)
+			InjectTec:Plugin:Logger.foundVersion(self, currentVersion)
 			return currentVersion.getFilename()
 		endif
 		
 		iCounter += 1
 	EndWhile
 	
-	InjectTec:Logger:Plugin.noInstalledVersion(self)
+	InjectTec:Plugin:Logger.noInstalledVersion(self)
 	return ""
 EndFunction

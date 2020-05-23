@@ -8,8 +8,6 @@ Group TargetSettings
 	{The LeveledItem record to target for injection.  Set this value if the value of isTargetLocal is true.}
 	InjectTec:Plugin Property targetPlugin = None Auto Const
 	{The plugin containing the targetted LeveledItem.  Set this value if the value of isTargetLocal has been set to false.}
-	Int Property targetID = 0 Auto Const
-	{The record ID of the targetted LeveledItem.  Set this value if the value of isTargetLocal has been set to false.}
 	DigitSet Property targetDigits = None Auto Const
 	{Alternative to the targetID property.  If you would rather avoid the base 16 to base 10 conversion, set the hexidecimal digits here.}
 EndGroup
@@ -29,11 +27,11 @@ Int Function coalesceIntValue(Int iStatic = 0, GlobalVariable variable = None) G
 EndFunction
 
 Bool Function canLoadTarget()
-	liTarget = InjectTec:Utility:LeveledItem.load(targetLeveled, targetPlugin, targetID, targetDigits)
+	liTarget = InjectTec:Utility:LeveledItem.load(targetLeveled, targetPlugin, targetDigits)
 	if (liTarget)
 		return true
 	else
-		InjectTec:Logger:Injector.couldNotLoadTarget(self)
+		InjectTec:Injector:Logger.couldNotLoadTarget(self)
 		return false
 	endif
 EndFunction

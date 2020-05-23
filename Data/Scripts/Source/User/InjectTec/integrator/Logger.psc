@@ -1,4 +1,4 @@
-Scriptname InjectTec:Logger:Integrator Hidden Const DebugOnly
+Scriptname InjectTec:Integrator:Logger Hidden Const DebugOnly
 
 String[] Function getTags() Global
     String[] tags = new String[1]
@@ -37,3 +37,4 @@ EndFunction
 Bool Function logStateCheck(InjectTec:Integrator integrator) Global
     return log(integrator + " is state checking in " + integrator.GetState())
 EndFunction
+

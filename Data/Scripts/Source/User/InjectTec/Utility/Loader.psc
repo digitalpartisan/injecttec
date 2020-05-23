@@ -7,24 +7,22 @@ Import InjectTec:Utility:HexidecimalLogic
 Group RemoteSourceSettings
 	InjectTec:Plugin Property RemotePlugin = None Auto Const Mandatory
 	{The plugin containing the required record.}
-	Int Property RemoteID = 0 Auto Const Mandatory
-	{The record ID of the sourced Form.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property RemoteDigits = None Auto Const
 	{This is an alternative option to setting the sourceID property.  If you would rather not bother with the base 16 to base 10 calculation, enter the base 16 digits here.}
 EndGroup
 
-Form Function loadHelper(Form record = None, InjectTec:Plugin plugin = None, Int iID = 0, DigitSet digits = None) Global
+Form Function loadHelper(Form record = None, InjectTec:Plugin plugin = None, DigitSet digits = None) Global
 {Syntacial sugar which enables InjectTec:Injector logic not to care how a Form record is accessed.
-If the record is indicated to be true by bLocal, then myForm is returned.  Otherwise, the result of a record lookup using myPlugin and myID is returned.}
+If the record is indicated to be true by bLocal, then myForm is returned.  Otherwise, the result of a record lookup using a plugin and digits is returned.}
 	if (record)
 		return record
 	elseif (plugin)
-		return plugin.lookupWithCoalescedID(iID, digits)
+		return plugin.lookup(digits)
 	endif
 	
 	return None
 EndFunction
 
 Form Function concreteLoad()
-	return loadHelper(None, RemotePlugin, RemoteID, RemoteDigits)
+	return loadHelper(None, RemotePlugin, RemoteDigits)
 EndFunction

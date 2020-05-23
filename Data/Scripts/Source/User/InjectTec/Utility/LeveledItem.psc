@@ -28,7 +28,7 @@ EndFunction
 
 Function addForm(LeveledItem liTarget, Form fItem, Int iLevel = 1, Int iAmount = 1) Global
 {Trivial, except for logging.  Useful for debugging.}
-	InjectTec:Logger:Injection.logLeveledInjection(liTarget, fItem, iLevel, iAmount)
+	InjectTec:Utility:Logger.logLeveledInjection(liTarget, fItem, iLevel, iAmount)
 	liTarget.AddForm(fItem, iLevel, iAmount)
 EndFunction
 
@@ -49,7 +49,7 @@ EndFunction
 
 Function addFormList(LeveledItem liTarget, FormList flForms, Int iLevel = 1, Int iAmount = 1) Global
 {Adds the Form records in the flForms FormList to the LeveledItem liTarget.}
-	InjectTec:Logger:Injection.leveled(liTarget, flForms, iLevel, iAmount)
+	InjectTec:Utility:Logger.leveled(liTarget, flForms, iLevel, iAmount)
 	
 	Int iCounter = 0
 	Int iSize = flForms.getSize()
@@ -62,7 +62,7 @@ EndFunction
 
 Function addForms(LeveledItem liTarget, Form[] faForms, Int iLevel = 1, Int iAmount = 1) Global
 {Adds the Form records in faForms to the LeveledItem liTarget.}
-	InjectTec:Logger:Injection.leveledArray(liTarget, faForms, iLevel, iAmount)
+	InjectTec:Utility:Logger.leveledArray(liTarget, faForms, iLevel, iAmount)
 	
 	Int iCounter = 0
 	
@@ -74,12 +74,12 @@ EndFunction
 
 Function revert(LeveledItem liTarget) Global
 {Trivial, except for logging.  Especially useful for debugging because this behavior is known to be particularly destructive.}
-	InjectTec:Logger:Reversion.leveled(liTarget)
+	InjectTec:Utility:Logger.revertingLeveled(liTarget)
 	liTarget.revert()
 EndFunction
 
-LeveledItem Function load(LeveledItem record = None, InjectTec:Plugin plugin = None, Int iID = 0, DigitSet digits = None) Global
-	return InjectTec:Utility:Loader.loadHelper(record, plugin, iID, digits) as LeveledItem
+LeveledItem Function load(LeveledItem record = None, InjectTec:Plugin plugin = None, DigitSet digits = None) Global
+	return InjectTec:Utility:Loader.loadHelper(record, plugin, digits) as LeveledItem
 EndFunction
 
 LeveledItem Function get()

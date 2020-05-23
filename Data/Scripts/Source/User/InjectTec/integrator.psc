@@ -52,7 +52,7 @@ Function goToUnrun()
 EndFunction
 
 Function stateCheck()
-    InjectTec:Logger:Integrator.logStateCheck(self)
+    InjectTec:Integrator:Logger.logStateCheck(self)
 EndFunction
 
 Bool Function shouldStartLogic()
@@ -81,7 +81,7 @@ EndFunction
 
 Auto State Waiting
 	Event OnBeginState(String asOldState)
-	    InjectTec:Logger:Integrator.logWaiting(self)
+	    InjectTec:Integrator:Logger.logWaiting(self)
 		bHasRun = false
 		Stop()
 	EndEvent
@@ -99,7 +99,7 @@ Auto State Waiting
     EndFunction
 
 	Function stateCheck()
-	    InjectTec:Logger:Integrator.logStateCheck(self)
+	    InjectTec:Integrator:Logger.logStateCheck(self)
 		shouldStart() && Start()
 	EndFunction
 EndState
@@ -118,7 +118,7 @@ EndFunction
 
 State Started
 	Event OnBeginState(String asOldState)
-	    InjectTec:Logger:Integrator.logStarted(self)
+	    InjectTec:Integrator:Logger.logStarted(self)
 
 		if (shouldUnrun())
 			goToUnrun()
@@ -139,7 +139,7 @@ State Started
 	EndFunction
 
 	Function stateCheck()
-	    InjectTec:Logger:Integrator.logStateCheck(self)
+	    InjectTec:Integrator:Logger.logStateCheck(self)
 		shouldUnrun() && goToUnrun()
 	EndFunction
 
@@ -167,7 +167,7 @@ EndFunction
 
 State Stopped
     Event OnBeginState(String asOldState)
-        InjectTec:Logger:Integrator.logStopped(self)
+        InjectTec:Integrator:Logger.logStopped(self)
 		bHasRun = false
         stopBehavior()
         goToWaiting()
@@ -180,7 +180,7 @@ EndFunction
 
 State Unrun
     Event OnBeginState(String asOldState)
-        InjectTec:Logger:Integrator.logUnrun(self)
+        InjectTec:Integrator:Logger.logUnrun(self)
 		bHasRun = false
         unrunBehavior()
         goToWaiting()

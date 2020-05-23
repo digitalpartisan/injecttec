@@ -6,8 +6,6 @@ Import InjectTec:Utility:HexidecimalLogic
 Group SourceSettings
 	InjectTec:Plugin Property SourcePlugin = None Auto Const Mandatory
 	{The plugin containing the sourced Form IDs.}
-	Int[] Property SourceIDs = None Auto Const
-	{The record IDs of the sourced Forms.}
 	DigitSet[] Property SourceDigitSets = None Auto Const
 	{Alternative to the SourceIDs property.  If you would rather not bother with the base 16 to base 10 conversions, set the hexidecimal digits here.}
 EndGroup
@@ -23,9 +21,9 @@ Bool Function canLoadSource()
 		return false
 	endif
 	
-	faAdditions = SourcePlugin.lookupArrayWithCoalescedIDs(SourceIDs, SourceDigitSets)
+	faAdditions = SourcePlugin.lookupArray(SourceDigitSets)
 	if (!faAdditions)
-		InjectTec:Logger:Injector.couldNotLoadSource(self)
+		InjectTec:Injector:Logger.couldNotLoadSource(self)
 		return false
 	endif
 	
