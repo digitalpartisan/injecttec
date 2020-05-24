@@ -1,8 +1,8 @@
 Scriptname InjectTec:Plugin:Logger Hidden Const DebugOnly
 
 String[] Function getTags() Global
-	String[] tags = new String[1]
-	tags[0] = "Plugin"
+	String[] tags = new String[0]
+	tags.Add("Plugin")
 	return tags
 EndFunction
 
