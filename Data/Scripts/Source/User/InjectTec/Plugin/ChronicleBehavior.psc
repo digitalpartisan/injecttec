@@ -1,4 +1,5 @@
 Scriptname InjectTec:Plugin:ChronicleBehavior extends Chronicle:Package:CustomBehavior
+{See Chronicle:Package:CustomBehavior}
 
 InjectTec:Plugin[] Property ThirdPartyPlugins Auto Const Mandatory
 

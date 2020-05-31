@@ -39,21 +39,25 @@ Function uninstallBehaviors()
 EndFunction
 
 Function startBehavior()
+{See InjectTec:Integrator.startBehavior()}	
 	parent.startBehavior()
 	installBehaviors()
 EndFunction
 
 Function gameLoadBehavior()
+{See InjectTec:Integrator.gameLoadBehavior()}
 	parent.gameLoadBehavior()
 	postloadBehaviors()
 EndFunction
 
 Function stopBehavior()
+{See InjectTec:Integrator.stopBehavior()}
     parent.stopBehavior()
 	uninstallBehaviors()
 EndFunction
 
 Function unrunBehavior()
+{See InjectTec:Integrator.unrunBehavior()}
     parent.unrunBehavior()
 	uninstallBehaviors()
 EndFunction

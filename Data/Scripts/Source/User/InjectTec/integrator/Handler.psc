@@ -1,4 +1,5 @@
 Scriptname InjectTec:Integrator:Handler extends DynamicTerminal:Basic Conditional
+{Used to manipulate a InjectTec:Integrator object by way of a terminal.}
 
 InjectTec:Integrator myIntegrator = None
 Bool bIsValid = false Conditional

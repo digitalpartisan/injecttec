@@ -1,4 +1,5 @@
 Scriptname InjectTec:Integrator:ChronicleBehavior extends Chronicle:Package:CustomBehavior
+{See Chronicle:Package:CustomBehavior}
 
 FormList Property Integrators Auto Const Mandatory
 

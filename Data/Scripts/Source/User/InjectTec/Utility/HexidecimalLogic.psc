@@ -1,4 +1,5 @@
 Scriptname InjectTec:Utility:HexidecimalLogic Hidden Const
+{Helper logic for handling sets of hexidecimal digits that identify record IDs in plugins.}
 
 Struct DigitSet
 	String sFive = "0"
@@ -85,6 +86,7 @@ Bool Function isDigitValid(String sDigit) Global
 EndFunction
 
 String Function digitSetToString(DigitSet digits) Global
+{Useful for logging purposes}
 	if (!digits)
 		return "N/A - no digits provided"
 	endif
@@ -93,6 +95,7 @@ String Function digitSetToString(DigitSet digits) Global
 EndFunction
 
 Int Function getDigitValue(String sChar, Int iPower = 0) Global
+{Used to scale the value of the digit being proivded.  See getDigitSetValue() for use.}
 	Int iValue = getCharacterValue(sChar)
 	if (-1 == iValue)
 		return -1
@@ -102,6 +105,7 @@ Int Function getDigitValue(String sChar, Int iPower = 0) Global
 EndFunction
 
 Int Function getDigitSetValue(DigitSet digits) Global
+{Returns the decimal value of the provided digit set.}
 	if (!digits)
 		return 0
 	endif
@@ -150,6 +154,7 @@ Int Function getDigitSetValue(DigitSet digits) Global
 EndFunction
 
 Int[] Function getDigitSetValues(DigitSet[] aDigitSets) Global
+{Returns an array of decimal integers whose values match the decimal values of the digit sets in aDigitSets}
 	Int[] iaResults = new Int[0]
 	Int iCounter = 0
 	while (iCounter < aDigitSets.Length)

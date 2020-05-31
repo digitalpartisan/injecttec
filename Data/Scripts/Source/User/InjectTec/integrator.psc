@@ -1,4 +1,5 @@
 Scriptname InjectTec:Integrator extends Quest Conditional
+{Generic logic used in scriting cross-plugin functionality.  Handles things like are the required plugins installed, event hooks for what to do when starting up, shutting down, and when the required plugins are suddenly no longer installed.}
 
 Group MinimalRequirements
     InjectTec:Plugin[] Property Plugins Auto Const Mandatory

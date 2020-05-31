@@ -1,4 +1,5 @@
 Scriptname InjectTec:Injector:Bulk:ChronicleBehavior extends Chronicle:Package:CustomBehavior
+{See Chronicle:Package:CustomBehavior}
 
 InjectTec:Injector:Bulk Property BulkInjections Auto Const Mandatory
 
