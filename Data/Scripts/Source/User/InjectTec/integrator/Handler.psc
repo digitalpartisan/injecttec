@@ -37,6 +37,7 @@ Function updateState()
     bPluginRequirementMet = false
     bHasRun = false
 	bCanRun = false
+	bIsValid = getIntegrator() as Bool
 
     if (!isValid())
         return

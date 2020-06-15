@@ -1,4 +1,4 @@
-Scriptname InjectTec:integrator:Handler:STATIC extends InjectTec:integrator:Handler
+Scriptname InjectTec:Integrator:Handler:STATIC extends InjectTec:Integrator:Handler Conditional
 
 InjectTec:Integrator Property MyIntegrator Auto Const Mandatory
 
