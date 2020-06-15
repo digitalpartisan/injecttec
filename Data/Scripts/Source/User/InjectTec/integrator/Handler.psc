@@ -1,7 +1,7 @@
 Scriptname InjectTec:Integrator:Handler extends DynamicTerminal:Basic Conditional
 {Used to manipulate a InjectTec:Integrator object by way of a terminal.}
 
-InjectTec:Integrator myIntegrator = None
+InjectTec:Integrator integratorRef = None
 Bool bIsValid = false Conditional
 Bool bPluginRequirementMet = false Conditional
 Bool bHasRun = false Conditional
@@ -24,12 +24,12 @@ Bool Function canRun()
 EndFunction
 
 InjectTec:Integrator Function getIntegrator()
-    return myIntegrator
+    return integratorRef
 EndFunction
 
 Function setIntegrator(InjectTec:Integrator newIntegrator)
-    myIntegrator = newIntegrator
-    bIsValid = (None != myIntegrator)
+    integratorRef = newIntegrator
+    bIsValid = (None != integratorRef)
     updateState()
 EndFunction
 
