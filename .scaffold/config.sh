@@ -1,2 +1,0 @@
-SCAFFOLD_MOD="InjectTec"
-SCAFFOLD_GAME="fallout4"
