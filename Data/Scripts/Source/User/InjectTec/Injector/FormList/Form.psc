@@ -9,7 +9,7 @@ Group SourceSettings
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced Form.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property sourceDigits = None Auto Const
-	{This is an alternative option to setting the sourceID property.  If you would rather not bother with the base 16 to base 10 calculation, enter the base 16 digits here.}
+	{The hexidecimal digits of the source form to load from sourcePlugin.}
 EndGroup
 
 Form fAddition = None

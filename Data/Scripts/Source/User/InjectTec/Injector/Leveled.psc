@@ -9,7 +9,7 @@ Group TargetSettings
 	InjectTec:Plugin Property targetPlugin = None Auto Const
 	{The plugin containing the targetted LeveledItem.  Set this value if the value of isTargetLocal has been set to false.}
 	DigitSet Property targetDigits = None Auto Const
-	{Alternative to the targetID property.  If you would rather avoid the base 16 to base 10 conversion, set the hexidecimal digits here.}
+	{The hexidecimal digits of the target form to load from targetPlugin.}
 EndGroup
 
 LeveledItem liTarget = None

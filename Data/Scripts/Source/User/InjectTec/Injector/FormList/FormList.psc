@@ -9,7 +9,7 @@ Group SourceSettings
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced FormList.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property sourceDigits = None Auto Const
-	{Alternative to setting sourceID.  If you woudl rather skip the base 16 to base 10 conversion, set the hexidecimal digits here.}
+	{The hexidecimal digits of the source form to load from sourcePlugin.}
 EndGroup
 
 FormList flAdditions = None

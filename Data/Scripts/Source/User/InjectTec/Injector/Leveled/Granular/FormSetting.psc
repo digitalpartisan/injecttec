@@ -7,6 +7,7 @@ Import InjectTec:Utility:LeveledItem
 Group FormData
 	Form Property LocalForm = None Auto Const
 	DigitSet Property RemoteDigits = None Auto Const
+	{The hexidecimal digits of the forms to inject into the leveled list.}
 EndGroup
 
 Group QuantityData

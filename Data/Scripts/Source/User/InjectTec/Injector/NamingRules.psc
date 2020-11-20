@@ -9,7 +9,7 @@ Group TargetSettings
 	InjectTec:Plugin Property targetPlugin = None Auto Const
 	{The plugin containing the targetted InstanceNamingRules.  Set this value if the value of isTargetLocal has been set to false.}
 	DigitSet Property targetDigits = None Auto Const
-	{Alternative to the targetID property.  Set this to bypass the need to convert the hexidecimal digits to an integer.}
+	{The hexidecimal digits of the target form to load from targetPlugin.}
 EndGroup
 
 Group SourceSettings
@@ -18,7 +18,7 @@ Group SourceSettings
 	InjectTec:Plugin Property sourcePlugin = None Auto Const
 	{The plugin containing the sourced InstanceNamingRules.  Set this value if the value of isSourceLocal has been set to false.}
 	DigitSet Property sourceDigits = None Auto Const
-	{Alternative to the sourceID property.  Set this to bypass the need to convert the hexidecimal digits to an integer.}
+	{The hexidecimal digits of the source form to load from sourcePlugin.}
 EndGroup
 
 InstanceNamingRules innrTarget = None

@@ -7,7 +7,7 @@ Group SourceSettings
 	InjectTec:Plugin Property SourcePlugin = None Auto Const Mandatory
 	{The plugin containing the sourced Form IDs.}
 	DigitSet[] Property SourceDigitSets = None Auto Const
-	{Alternative to the SourceIDs property.  If you would rather not bother with the base 16 to base 10 conversions, set the hexidecimal digits here.}
+	{The hexidecimal digits of the source forms to load from sourcePlugin.}
 EndGroup
 
 Form[] faAdditions = None
